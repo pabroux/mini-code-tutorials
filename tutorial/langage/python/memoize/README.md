@@ -1,5 +1,7 @@
 # Python Memoization
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pabroux/mini-code-tutorials/blob/master/tutorial/langage/python/memoize/src/memoize.ipynb)
+
 This tutorial explains how to memoize a function in Python.
 
 ## What?
@@ -11,7 +13,7 @@ This save time when an expensive or I/O bound function is periodically called wi
 
 Two versions are available:
 - [Google Colab](https://colab.research.google.com/github/pabroux/mini-code-tutorials/blob/master/tutorial/langage/python/memoize/src/memoize.ipynb)
-- [Script](#script-version)
+- Script
 
 ### Script version
 

@@ -9,7 +9,7 @@ def factorial(n: int) -> int:
 factorial(2)
 
 # Second call: reuses memoized results for 0, 1, 2 (cache hit!)
-factorial(4) # Only computes factorial(3) and (4)
+factorial(4) # Only computes factorial(3) and factorial(4)
 
 # Inspect cache performance
 print(factorial.cache_info())

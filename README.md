@@ -4,10 +4,14 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 
 ## 📣 The last 5 tutorials
 
+- [LLM MCP](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp)
 - [Python memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
 
 ## 📚 All tutorials by category
 
+- AI
+    - LLM
+        - [MCP](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp)
 - Langage
     - Python
         - [Memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)

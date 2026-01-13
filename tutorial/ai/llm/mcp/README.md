@@ -3,7 +3,7 @@
 This tutorial explains how to write and run a MCP client and server.
 
 > [!IMPORTANT]
-> This tutorial requires some knowledge of MPC. I highly recommend you to read the [MCP Course by Hugging Face](https://huggingface.co/learn/mcp-course/). 
+> This tutorial requires some knowledge of MPC. I highly recommend you to read at least the [Key concepts and terminology](https://huggingface.co/learn/mcp-course/unit1/key-concepts) page from the [MCP Course by Hugging Face](https://huggingface.co/learn/mcp-course/) before going further. 
 
 ## What?
 
@@ -12,7 +12,7 @@ It uses a client-server architecture with [JSON-RPC](https://huggingface.co/lear
 
 ## How to use the tutorial?
 
-- Scripts
+- Script
 
 ## Requirements
 

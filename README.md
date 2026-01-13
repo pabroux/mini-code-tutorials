@@ -4,10 +4,10 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 
 ## 📣 The last 5 tutorials
 
-- [Python memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/langage/python/memoize)
+- [Python memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
 
 ## 📚 All tutorials by category
 
 - Langage
     - Python
-        - [Memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/langage/python/memoize)
+        - [Memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)

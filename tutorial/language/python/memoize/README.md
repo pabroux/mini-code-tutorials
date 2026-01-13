@@ -24,7 +24,6 @@ Two versions are available:
 #### Usage
 
 Everything is well explained in the script. To execute the script, run the following command:
-
-```python
+```zsh
 python src/memoize.py
 ```

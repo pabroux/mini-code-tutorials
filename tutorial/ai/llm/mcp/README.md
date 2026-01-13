@@ -8,7 +8,7 @@ This tutorial explains how to create and run both an MCP client and server.
 ## What?
 
 MCP is an open-source standard developed by Anthropic for connecting large language models (LLMs) to external data sources, tools, and applications.
-It uses a client-server architecture with [JSON-RPC](https://huggingface.co/learn/mcp-course/unit1/communication-protocol#json-rpc-the-foundation) to standardize tool discovery, execution, and context sharing, eliminating custom integrations.
+It uses a client-server architecture with [JSON-RPC 2.0](https://huggingface.co/learn/mcp-course/unit1/communication-protocol#json-rpc-the-foundation) to standardize tool discovery, execution, and context sharing, eliminating custom integrations.
 
 ## How to use the tutorial?
 

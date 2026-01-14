@@ -69,6 +69,7 @@ Place it in client-specific directories (e.g., `~/.cursor/mcp.json`) to let IDEs
 
 ## Resources
 
-- [**MCP Course** by Hugging Face](https://huggingface.co/learn/mcp-course/)
-- [**What is MCP?** by Cursor](https://cursor.com/docs/context/mcp#what-is-mcp)
-- [**What is MCP?** by Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro)
+- [MCP Course](https://huggingface.co/learn/mcp-course/) by Hugging Face
+- [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)
+- [What is MCP?](https://cursor.com/docs/context/mcp#what-is-mcp) by Cursor
+- [What is MCP?](https://modelcontextprotocol.io/docs/getting-started/intro) by Model Context Protocol

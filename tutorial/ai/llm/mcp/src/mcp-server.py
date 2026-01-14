@@ -17,7 +17,7 @@ def get_location(person: str) -> str:
 @mcp.resource("details://{person}")
 def get_details(person: str) -> str:
     """Provide details about a specified person."""
-    return f"{person}: Green eyes, Driver's licence 126739."
+    return f"{person}: Born in Hawkins, Driver's licence 126739."
 
 @mcp.resource("config://settings")
 def get_settings() -> str:

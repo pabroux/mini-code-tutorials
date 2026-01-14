@@ -40,24 +40,35 @@ uv sync
 
 Everything is well explained in the scripts of the `src` folder. 
 
-To execute the MCP server in development mode, run the following command:
+### Development mode
+
+Run the following command:
 ```zsh
 mcp dev src/mcp-server.py
 ```
 
-> [!NOTE]
-> In the development mode, you'll have an UI that you can use to send and test requests to the server.
-> Don't forget to click on the "Connect" button at the launch!
+Development mode provides a built-in UI for sending/testing requests. Click "Connect" on launch.
 
-To execute the MCP server in production mode, run the following command:
+### Production mode
+
+Deploy for remote HTTP+SSE access:
 ```zsh
 mcp run src/mcp-server.py
 ```
 
-Once the server is up and running, you c
+Connect via MCP clients like Cursor, Claude Desktop, or VS Code using your `mcp.json` configuration or direct HTTP endpoints.
 
-Once the server is in pro
+### Client integration
+
+The `src/mcp.json` file enables automatic discovery and local execution of the `src/mcp-server.py` in compatible MCP clients like Cursor, and Claude Desktop.
+
+Place it in client-specific directories (e.g., `~/.cursor/mcp.json`) to let IDEs spawn the server via stdio when needed—no manual mcp dev required.
+
+> [!important]
+> Update the path within `src/mcp.json` to correctly point to `src/mcp-server.py` before use.
 
 ## Resources
 
-- [MCP Course by Hugging Face](https://huggingface.co/learn/mcp-course/)
+- [**MCP Course** by Hugging Face](https://huggingface.co/learn/mcp-course/)
+- [**What is MCP?** by Cursor](https://cursor.com/docs/context/mcp#what-is-mcp)
+- [**What is MCP?** by Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro)

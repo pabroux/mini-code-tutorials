@@ -1,6 +1,6 @@
 # Model Context Protocol (MCP)
 
-This tutorial explains how to create and run both an MCP client and server.
+This tutorial explains how to create and run a MCP server.
 
 > [!IMPORTANT]
 > This tutorial requires some knowledge of MPC. I highly recommend you to read at least the [Key Concepts and Terminology](https://huggingface.co/learn/mcp-course/unit1/key-concepts) page from the [MCP Course by Hugging Face](https://huggingface.co/learn/mcp-course/) before going further. 
@@ -38,7 +38,7 @@ uv sync
 
 ## Usage
 
-Everything is well explained in the scripts. 
+Everything is well explained in the scripts of the `src` folder. 
 
 To execute the MCP server in development mode, run the following command:
 ```zsh
@@ -54,7 +54,9 @@ To execute the MCP server in production mode, run the following command:
 mcp run src/mcp-server.py
 ```
 
-🚧 The MCP client is not yet ready... Come back later!
+Once the server is up and running, you c
+
+Once the server is in pro
 
 ## Resources
 

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "Stranger things server": {
+      "command": "python",
+      "args": ["/path/to/mcp-server.py"]
+    }
+  }
+}

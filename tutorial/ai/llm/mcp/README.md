@@ -16,7 +16,7 @@ It uses a client-server architecture with [JSON-RPC 2.0](https://huggingface.co/
 
 ## Requirements
 
-- Python 3.11+
+- [Python 3.11+](https://www.python.org/downloads/)
 - [uv](https://docs.astral.sh/uv/)
 
 ## Installation

@@ -80,7 +80,7 @@ python src/mcp-client.py
 ```
 
 > [!IMPORTANT]
-> Update the path within `src/mcp-client.py` to correctly point to `src/mcp-server.py` before use.
+> Update the path within `src/mcp-client.py` to correctly point to `src/mcp-server.py` before use. Also, you'll need a [`HF_TOKEN` environment variable](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hftoken) set to use the Hugging Face's `InferenceModel()`.
 
 ## Resources
 

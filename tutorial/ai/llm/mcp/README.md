@@ -16,56 +16,71 @@ It uses a client-server architecture with [JSON-RPC 2.0](https://huggingface.co/
 
 ## Requirements
 
-- [Python 3.11+](https://www.python.org/downloads/)
 - [uv](https://docs.astral.sh/uv/)
 
 ## Installation
 
 Create a virtual environment:
 ```zsh
-uv venv --python 3.11 .venv
+uv venv --python 3.11
 ```
 
-Activate the environment:
-```zsh
-.venv/bin/activate
-```
-
-Then install the dependencies:
+Install the dependencies:
 ```zsh
 uv sync
 ```
 
-## Usage
-
-Everything is well explained in the scripts of the `src` folder. 
-
-### Development mode
-
-Run the following command:
+Finally, activate the virtual environment:
 ```zsh
-mcp dev src/mcp-server.py
+source .venv/bin/activate
 ```
 
-Development mode provides a built-in UI for sending/testing requests. Click "Connect" on launch.
+## Usage
 
-### Production mode
+Everything is well explained in the scripts of the `src` folder.
+You need to run a MCP server and a MCP client to make it work. 
 
-Deploy for remote HTTP+SSE access:
+### MCP server
+
+Run the following command:
 ```zsh
 mcp run src/mcp-server.py
 ```
 
-Connect via MCP clients like Cursor, Claude Desktop, or VS Code using your `mcp.json` configuration or direct HTTP endpoints.
+> [!TIP]
+> Use the following command to run in development mode:
+> ```zsh
+> mcp dev src/mcp-server.py
+> ```
+> That mode provides a built-in UI for sending/testing requests. Click "Connect" on launch.
 
-### Client integration
+### MCP client
+
+Two ways:
+- Passing the `mcp.json` to a host like Cursor or Claude Desktop
+- Programmatically through MCP client implementation
+
+#### Using the `mcp.json` file
 
 The `src/mcp.json` file enables automatic discovery and local execution of the `src/mcp-server.py` in compatible MCP clients like Cursor, and Claude Desktop.
 
 Place it in client-specific directories (e.g., `~/.cursor/mcp.json`) to let IDEs spawn the server via stdio when needed—no manual mcp dev required.
 
-> [!important]
+> [!IMPORTANT]
 > Update the path within `src/mcp.json` to correctly point to `src/mcp-server.py` before use.
+
+#### Programmatically
+
+The `src/mcp-client.py` file is a simple [Gradio](https://www.gradio.app/) example using the Hugging Face's `smolagents` agent library.
+That library offers a simple way to create agents with MCP integrations.
+
+Run the following command:
+```zsh
+python src/mcp-client.py
+```
+
+> [!IMPORTANT]
+> Update the path within `src/mcp-client.py` to correctly point to `src/mcp-server.py` before use.
 
 ## Resources
 

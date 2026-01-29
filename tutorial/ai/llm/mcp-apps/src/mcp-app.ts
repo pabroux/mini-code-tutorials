@@ -17,10 +17,12 @@ app.ontoolresult = (result) => {
 
 // Call tools from the MCP Server whenever users interact with the UI
 getTimeBtn.addEventListener("click", async () => {
+  // Call the "get-time" tool with no arguments
   const result = await app.callServerTool({
-    name: "get-time", // Here we call the tool named "get-time"
+    name: "get-time",
     arguments: {},
   });
+  // Update the UI
   const time = result.content?.find((c) => c.type === "text")?.text;
   serverTimeEl.textContent = time ?? "[ERROR]";
 });

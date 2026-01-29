@@ -10,18 +10,22 @@ import express from "express";
 import fs from "node:fs/promises";
 import path from "node:path";
 
-console.log("Starting MCP App server...");
-
+// Create the MCP server
 const server = new McpServer({
   name: "My MCP App Server",
   version: "1.0.0",
 });
 
-// The ui:// scheme tells hosts this is an MCP App resource.
-// The path structure is arbitrary; organize it however makes sense for your app.
+// The `ui://` scheme tells hosts this is an MCP App resource
+// ↳ The path structure is arbitrary.
 const resourceUri = "ui://get-time/mcp-app.html";
 
-// Register the tool that returns the current time
+// Register the tool `get-time` that returns the current time of the server
+// ↳ `_meta: { ui: { resourceUri } }`, during the discovery phase, informs
+//   the host that this tool is associated with the resource `resourceUri`
+//   and it should load the associated ui resource beforehand. The returned
+//   function will be called when the host requests the tool and should be
+//   passed to the ui resource.
 registerAppTool(
   server,
   "get-time",
@@ -46,10 +50,12 @@ registerAppResource(
   resourceUri,
   { mimeType: RESOURCE_MIME_TYPE },
   async () => {
+    // Read the HTML file
     const html = await fs.readFile(
       path.join(import.meta.dirname, "..", "dist", "mcp-app.html"),
       "utf-8",
     );
+    // Return the HTML content to the MCP client
     return {
       contents: [
         { uri: resourceUri, mimeType: RESOURCE_MIME_TYPE, text: html },
@@ -73,6 +79,9 @@ expressApp.post("/mcp", async (req, res) => {
   await transport.handleRequest(req, res, req.body);
 });
 
+console.log("Starting MCP App server...");
+
+// Start the server
 expressApp.listen(3001, (err) => {
   if (err) {
     console.error("Error starting server:", err);

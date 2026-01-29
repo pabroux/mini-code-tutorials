@@ -5,7 +5,7 @@ export default defineConfig({
   root: "src",
   plugins: [viteSingleFile()],
   build: {
-    outDir: "../dist",
+    outDir: "dist",
     emptyOutDir: false,
     rollupOptions: {
       input: "src/mcp-app.html",

@@ -52,7 +52,7 @@ registerAppResource(
   async () => {
     // Read the HTML file
     const html = await fs.readFile(
-      path.join(import.meta.dirname, "..", "dist", "mcp-app.html"),
+      path.join(import.meta.dirname, "dist", "mcp-app.html"),
       "utf-8",
     );
     // Return the HTML content to the MCP client

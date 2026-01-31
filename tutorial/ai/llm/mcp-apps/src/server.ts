@@ -17,7 +17,7 @@ const server = new McpServer({
 });
 
 // The `ui://` scheme tells hosts this is an MCP App resource
-// ↳ The path structure is arbitrary.
+// ↳ The path structure is arbitrary
 const resourceUri = "ui://get-time/mcp-app.html";
 
 // Register the tool `get-time` that returns the current time of the server
@@ -25,7 +25,7 @@ const resourceUri = "ui://get-time/mcp-app.html";
 //   the host that this tool is associated with the resource `resourceUri`
 //   and it should load the associated ui resource beforehand. The returned
 //   function will be called when the host requests the tool and should be
-//   passed to the ui resource.
+//   passed to the ui resource
 registerAppTool(
   server,
   "get-time",

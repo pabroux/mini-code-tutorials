@@ -20,11 +20,6 @@ It uses a client-server architecture with [JSON-RPC 2.0](https://huggingface.co/
 
 ## Installation
 
-Create a virtual environment:
-```zsh
-uv venv --python 3.11
-```
-
 Install the dependencies:
 ```zsh
 uv sync

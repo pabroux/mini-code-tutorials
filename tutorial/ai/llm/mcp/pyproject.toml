@@ -1,7 +1,7 @@
 [project]
 name = "mini-code-tutorials-mcp"
 version = "0.1.0"
-requires-python = ">=3.11"
+requires-python = "==3.11.4"
 dependencies = [
     "gradio[mcp]>=6.3.0",
     "mcp[cli]>=1.25.0",

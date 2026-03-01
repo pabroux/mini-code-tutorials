@@ -4,6 +4,7 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 
 ## 📣 Latest articles
 
+- [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
 - [LLM MCP Apps](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp-apps)
 - [LLM MCP](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp)
 - [Python memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
@@ -17,3 +18,6 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 - Langage
     - Python
         - [Memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
+- Tool
+    - Security
+        - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)

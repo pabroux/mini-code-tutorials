@@ -1,4 +1,7 @@
 # 📖⚡ Mini Code Tutorials
+<p>
+  <a href="https://github.com/pabroux/mini-code-tutorials/blob/master/LICENSE"><img src="https://img.shields.io/github/license/pabroux/mini-code-tutorials.svg?label=License" alt="License Badge"></a>
+</p>
 
 This is a repository collecting practical code tutorials shared on LinkedIn. Ready-to-use examples for developers.
 

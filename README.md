@@ -7,10 +7,10 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 
 ## 📣 Latest articles
 
+- [FastAPI SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/python/fastapi/sse)
 - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
 - [LLM MCP Apps](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp-apps)
 - [LLM MCP](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp)
-- [Python memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
 
 ## 📚 All tutorials by category
 
@@ -18,9 +18,13 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
     - LLM
         - [MCP](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp)
         - [MCP Apps](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp-apps)
-- Langage
+- Language
     - Python
         - [Memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
 - Tool
     - Security
         - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
+- Web
+    - Python
+        - FastAPI
+            - [SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/python/fastapi/sse)

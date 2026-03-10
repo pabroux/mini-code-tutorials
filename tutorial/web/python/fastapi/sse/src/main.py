@@ -10,7 +10,7 @@ from fastapi.sse import EventSourceResponse, ServerSentEvent
 
 app = FastAPI()
 
-tokens = ["Hello", "World", "!"]
+tokens = ["Hello", " world", " !"]
 
 # `response_class=EventSourceResponse` tells FastAPI two things:
 #   1. Wrap the generator's output in the SSE wire format automatically.

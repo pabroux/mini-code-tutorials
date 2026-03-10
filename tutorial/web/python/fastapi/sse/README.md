@@ -47,10 +47,11 @@ To test, run FastAPI in the dev mode as such:
 fastapi dev src/main.py
 ```
 
-Now, you can naviguate to `http://localhost:8080/docs` and test the SSE endpoint.
+Now, you can naviguate to `http://localhost:8080/docs` to access [Swagger UI](https://swagger.io/tools/swagger-ui/) and test the single endpoint using SSE.
 
 ## Resources
 
 - [EventSource API](https://developer.mozilla.org/en-US/docs/Web/API/EventSource) by Mozilla
 - [HTML specification: SSE](https://html.spec.whatwg.org/multipage/server-sent-events.html#server-sent-events) by WHATWG
 - [SSE documentation](https://fastapi.tiangolo.com/tutorial/server-sent-events/) by FastAPI
+

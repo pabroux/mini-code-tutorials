@@ -23,7 +23,7 @@ Two versions are available:
 
 #### Usage
 
-Everything is well explained in the script. To execute the script, run the following command:
+Everything is well explained in the script [`memoize.py`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/language/python/memoize/src/memoize.py) in the `src` folder. To execute the script, run the following command:
 ```zsh
 python src/memoize.py
 ```

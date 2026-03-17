@@ -40,7 +40,7 @@ source .venv/bin/activate
 
 ## Usage
 
-Everything is well explained in the `main.py` script, in the `src` folder.
+Everything is well explained in the [`main.py`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/web/python/fastapi/sse/src/main.py) script, in the `src` folder.
 
 To test, run FastAPI in the dev mode as such:
 ```zsh

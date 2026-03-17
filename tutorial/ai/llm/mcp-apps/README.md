@@ -42,7 +42,8 @@ This last command will output a single file in the `src/dist` folder: `mcp-app.h
 
 ## Usage
 
-Everything is well explained in the scripts of the `src` folder.
+Everything is well explained in the scripts of the `src` folder: [`mcp-app.html`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/ai/llm/mcp-apps/src/mcp-app.html), [`mcp-app.ts`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/ai/llm/mcp-apps/src/mcp-app.ts) and [`server.ts`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/ai/llm/mcp-apps/src/server.ts).
+
 You need to run a MCP server and a MCP client to make it work. 
 
 ### MCP server

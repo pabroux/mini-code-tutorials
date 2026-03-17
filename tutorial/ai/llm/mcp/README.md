@@ -32,7 +32,8 @@ source .venv/bin/activate
 
 ## Usage
 
-Everything is well explained in the scripts of the `src` folder.
+Everything is well explained in the scripts of the `src` folder: [`mcp-client.py`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/ai/llm/mcp/src/mcp-client.py), [`mcp-server.py`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/ai/llm/mcp/src/mcp-server.py) and [`mcp.json`](https://github.com/pabroux/mini-code-tutorials/blob/master/tutorial/ai/llm/mcp/src/mcp.json).
+
 You need to run a MCP server and a MCP client to make it work. 
 
 ### MCP server

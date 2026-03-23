@@ -23,7 +23,7 @@ Every developer branches off `main`, works for hours to a couple of days maximum
 A PR is not a full feature — it's a vertical slice of one.
 A new feature becomes: data layer, business logic, API surface, frontend wiring.
 Each slice is independently mergeable without breaking anything.
-If it can't be merged safely yet, it goes behind a flag.
+If it can't be merged safely yet, it goes behind a flag (i.e., merge it anyway, but guard it so it can’t hurt users until it’s ready).
 
 ### 3. Gate unfinished work with feature flags
 

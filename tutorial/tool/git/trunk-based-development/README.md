@@ -1,16 +1,16 @@
-# Trunk-Based Development (TBD)
+# Trunk Based Development (TBD)
 
-This tutorial shows the Trunk-Based Git workflow where everyone commits to a single long-lived branch, using feature flags and short-lived PRs to ship continuously without breaking production.
+This tutorial shows the Trunk Based Git workflow where everyone commits to a single long-lived branch, using feature flags and short-lived PRs to ship continuously without breaking production.
 
 ## What?
 
-Trunk-based development replaces long-lived feature branches with a single branch — `main` — that is always deployable.
+Trunk Based Development replaces long-lived feature branches with a single branch — `main` — that is always deployable.
 Features are broken into small sub-parts, merged frequently, and hidden behind feature flags until ready for users.
 Releases are business decisions marked with a [semver](https://semver.org) tag, not deployment events.
 
 ## How it works?
 
-### 1. Work on the *trunk* `main`, always
+**1. Work on the *trunk* `main`, always**
 
 There is one long-lived branch (called *trunk*): `main`. Unlike [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/), there is no `develop`, no `release/x.y`. 
 Every developer branches off `main`, works for hours to a couple of days maximum, then opens a Pull Request (PR) back to `main`.
@@ -18,14 +18,14 @@ Every developer branches off `main`, works for hours to a couple of days maximum
 > [!NOTE]
 > In a very small team (e.g., 2 people), each developer is streaming small commits straight into the *trunk* with a pre-integration step of running the build first (which must pass).
 
-### 2. Break features into sub-parts
+**2. Break features into sub-parts**
 
 A PR is not a full feature — it's a vertical slice of one.
 A new feature becomes: data layer, business logic, API surface, frontend wiring.
 Each slice is independently mergeable without breaking anything.
 If it can't be merged safely yet, it goes behind a flag (i.e., merge it anyway, but guard it so it can’t hurt users until it’s ready).
 
-### 3. Gate unfinished work with feature flags
+**3. Gate unfinished work with feature flags**
 
 Any code that isn't ready for normal users is wrapped in a flag. Two common strategies:
 
@@ -34,12 +34,12 @@ Any code that isn't ready for normal users is wrapped in a flag. Two common stra
 
 The flag is *OFF* by default for everyone else.
 
-### 4. Merge to `main` →  CI/CD triggered
+**4. Merge to `main` →  CI/CD triggered**
 
 Every merge to `main` triggers the full CI/CD pipeline: tests, build, deploy. `main` is always in production.
 This is continuous delivery — there is no manual deploy step, no release branch to cut, no merge freeze.
 
-### 5. Validate with stakeholders, then tag a release
+**5. Validate with stakeholders, then tag a release**
 
 When the team and stakeholders agree that everything behind flags is ready, you tag the commit:
 
@@ -50,7 +50,7 @@ git push origin v1.4.0
 
 This is a purely informational marker. Nothing changes in prod — that code has been running continuously. The tag just says: "*we collectively agreed this snapshot is v1.4.0.*"
 
-### 6. Gradually enable the flag, then remove it
+**6. Gradually enable the flag, then remove it**
 
 After the release tag, you progressively turn the flag `ON` for real users — 5%, 50%, 100%. The flag is your rollback mechanism.
 Once the rollback window is closed and the feature is stable, you open a cleanup PR that removes the flag and all its conditionals entirely.
@@ -59,7 +59,7 @@ The feature is now permanently part of the app.
 > [!NOTE]
 > Gradual rollout is optional but common. The minimal path is just: flag *ON* → monitor → remove flag.
 
-## Trunk-Based Development vs GitHub Flow
+## Main differences with GitHub Flow
 
 | | TBD | GitHub Flow |
 | - | - | - |

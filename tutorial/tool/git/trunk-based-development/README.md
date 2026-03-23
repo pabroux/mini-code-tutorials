@@ -30,7 +30,7 @@ Any code that isn't ready for normal users is wrapped in a flag. Two common stra
 
 The flag is *OFF* by default for everyone else.
 
-### 4. Merge to main = CI/CD triggers
+### 4. Merge to `main` →  CI/CD triggered
 
 Every merge to `main` triggers the full CI/CD pipeline: tests, build, deploy. `main` is always in production.
 This is continuous delivery — there is no manual deploy step, no release branch to cut, no merge freeze.
@@ -52,5 +52,5 @@ After the release tag, you progressively turn the flag `ON` for real users — 5
 Once the rollback window is closed and the feature is stable, you open a cleanup PR that removes the flag and all its conditionals entirely.
 The feature is now permanently part of the app.
 
-> [!NOTE] Gradual rollout is optional but common
-> The minimal path is just: flag *ON* → monitor → remove flag. 
+> [!NOTE]
+> Gradual rollout is optional but common. The minimal path is just: flag *ON* → monitor → remove flag. 

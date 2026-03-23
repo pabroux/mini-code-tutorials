@@ -10,16 +10,20 @@ Releases are business decisions marked with a [semver](https://semver.org) tag, 
 
 ## How it works?
 
-### 1. Work on `main`, always
+### 1. Work on the *trunk* `main`, always
 
-Similar to [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow), there is one long-lived branch: `main`. No `develop`, no `release/x.y` like with [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/). 
-Every developer branches off main, works for hours to a few days maximum, then opens a Pull Request (PR) back to main.
+There is one long-lived branch (called *trunk*): `main`. Unlike [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/), there is no `develop`, no `release/x.y`. 
+Every developer branches off `main`, works for hours to a couple of days maximum, then opens a Pull Request (PR) back to `main`.
+
+> [!NOTE]
+> In a very small team (e.g., 2 people), each developer is streaming small commits straight into the *trunk* with a pre-integration step of running the build first (which must pass).
 
 ### 2. Break features into sub-parts
 
 A PR is not a full feature — it's a vertical slice of one.
 A new feature becomes: data layer, business logic, API surface, frontend wiring.
-Each slice is independently mergeable without breaking anything. If it can't be merged safely yet, it goes behind a flag.
+Each slice is independently mergeable without breaking anything.
+If it can't be merged safely yet, it goes behind a flag.
 
 ### 3. Gate unfinished work with feature flags
 
@@ -66,3 +70,4 @@ The feature is now permanently part of the app.
 
 - [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) by Vincent Driessen
 - [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) by GitHub
+- [Trunk Based Development](https://trunkbaseddevelopment.com) by Trunk Based Development

@@ -1,4 +1,4 @@
-# Trunk-Based Development
+# Trunk-Based Development (TBD)
 
 This tutorial shows the Trunk-Based Git workflow where everyone commits to a single long-lived branch, using feature flags and short-lived PRs to ship continuously without breaking production.
 
@@ -6,13 +6,13 @@ This tutorial shows the Trunk-Based Git workflow where everyone commits to a sin
 
 Trunk-based development replaces long-lived feature branches with a single branch — `main` — that is always deployable.
 Features are broken into small sub-parts, merged frequently, and hidden behind feature flags until ready for users.
-Releases are business decisions marked with a semver tag, not deployment events.
+Releases are business decisions marked with a [semver](https://semver.org) tag, not deployment events.
 
 ## How it works?
 
 ### 1. Work on `main`, always
 
-There is one long-lived branch: `main`. No `develop`, no `release/x.y` like with GitFlow. 
+Similar to [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow), there is one long-lived branch: `main`. No `develop`, no `release/x.y` like with [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/). 
 Every developer branches off main, works for hours to a few days maximum, then opens a Pull Request (PR) back to main.
 
 ### 2. Break features into sub-parts
@@ -53,4 +53,16 @@ Once the rollback window is closed and the feature is stable, you open a cleanup
 The feature is now permanently part of the app.
 
 > [!NOTE]
-> Gradual rollout is optional but common. The minimal path is just: flag *ON* → monitor → remove flag. 
+> Gradual rollout is optional but common. The minimal path is just: flag *ON* → monitor → remove flag.
+
+## Trunk-Based Development vs GitHub Flow
+
+| | TBD | GitHub Flow |
+| - | - | - |
+| Feature hiding mechanism | Feature flags | Branch isolation |
+| PRs |Short, frequent, small | Longer, per-feature |
+
+## Resources
+
+- [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/) by Vincent Driessen
+- [GitHub Flow](https://docs.github.com/en/get-started/using-github/github-flow) by GitHub

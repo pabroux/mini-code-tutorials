@@ -7,7 +7,7 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 
 ## 📣 Latest articles
 
-- [Trunk Based Development](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/git/trunk-based-development)
+- [Git TBD](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/git/trunk-based-development)
 - [FastAPI SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/python/fastapi/sse)
 - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
 - [LLM MCP Apps](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp-apps)
@@ -23,7 +23,7 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
         - [Memoization](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/language/python/memoize)
 - Tool
     - Git
-        - [Trunk Based Development](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/git/trunk-based-development)
+        - [TBD](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/git/trunk-based-development)
     - Security
         - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
 - Web

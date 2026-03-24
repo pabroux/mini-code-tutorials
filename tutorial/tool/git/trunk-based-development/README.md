@@ -4,19 +4,24 @@ This tutorial shows the Trunk Based Git workflow where everyone commits to a sin
 
 ## What?
 
-Trunk Based Development replaces long-lived feature branches with a single branch — `main` — that is always deployable.
+Trunk Based Development (TBD) replaces long-lived feature branches with a single branch — `main` — that is always deployable.
 Features are broken into small sub-parts, merged frequently, and hidden behind feature flags until ready for users.
-Releases are business decisions marked with a [semver](https://semver.org) tag, not deployment events.
+Branches must be short-lived — typically no more than one to two days — and merged back into the trunk as quickly as possible.
+This constraint is central to TBD and prevents integration drift.
+Releases are *typically* business decisions marked with a [SemVer](https://semver.org) tag, not deployment events.
 
-## How it works?
+> [!IMPORTANT]
+> TBD is strictly a **branching strategy** — it defines how code flows into the trunk, not how or when it reaches users. Deployment and release practices (feature flags, gradual rollouts, tagging) are complementary but independent choices.
+
+## How does it work?
 
 **1. Work on the *trunk* `main`, always**
 
-There is one long-lived branch (called *trunk*): `main`. Unlike [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/), there is no `develop`, no `release/x.y`. 
+There is one long-lived branch (called *trunk*): `main`. Unlike [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/), there is no `develop`, no `release/x.y`.
 Every developer branches off `main`, works for hours to a couple of days maximum, then opens a Pull Request (PR) back to `main`.
 
 > [!NOTE]
-> In a very small team (e.g., 2 people), each developer is streaming small commits straight into the *trunk* with a pre-integration step of running the build first (which must pass).
+> In a very small team (e.g., 2 people), each developer is streaming small commits straight into the *trunk* with a pre-commit step of running the build first (which must pass).
 
 **2. Break features into sub-parts**
 
@@ -34,10 +39,14 @@ Any code that isn't ready for normal users is wrapped in a flag. Two common stra
 
 The flag is *OFF* by default for everyone else.
 
-**4. Merge to `main` →  CI/CD triggered**
+**4. Merge to `main` → CI triggered**
 
-Every merge to `main` triggers the full CI/CD pipeline: tests, build, deploy. `main` is always in production.
-This is continuous delivery — there is no manual deploy step, no release branch to cut, no merge freeze.
+Every merge to `main` triggers the CI pipeline: tests, build, artifact packaging. 
+
+> [!WARNING]
+> TBD itself does not prescribe what happens next — deployment is a separate decision. You can layer on Continuous Delivery (every green build is deployable on demand) or Continuous Deployment (every green build auto-deploys), but neither is inherent to TBD. The branching model and the release strategy are independent choices.
+
+### Complementary practices
 
 **5. Validate with stakeholders, then tag a release**
 
@@ -48,7 +57,7 @@ git tag v1.4.0
 git push origin v1.4.0
 ```
 
-This is a purely informational marker. Nothing changes in prod — that code has been running continuously. The tag just says: "*we collectively agreed this snapshot is v1.4.0.*"
+This is a purely informational marker. Nothing new is deployed — that code has been running in prod (behind flags) continuously. The tag just says: "*we collectively agreed this snapshot is v1.4.0.*"
 
 **6. Gradually enable the flag, then remove it**
 
@@ -62,7 +71,7 @@ The feature is now permanently part of the app.
 ## Main differences with GitHub Flow
 
 | | TBD | GitHub Flow |
-| - | - | - |
+| --- | --- | --- |
 | Feature hiding mechanism | Feature flags | Branch isolation |
 | PRs |Short, frequent, small | Longer, per-feature |
 

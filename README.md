@@ -8,7 +8,7 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
 ## 📣 Latest articles
 
 - [Git TBD](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/git/trunk-based-development)
-- [FastAPI SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/python/fastapi/sse)
+- [FastAPI SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/fastapi/sse)
 - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
 - [LLM MCP Apps](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/ai/llm/mcp-apps)
 
@@ -27,6 +27,5 @@ This is a repository collecting practical code tutorials shared on LinkedIn. Rea
     - Security
         - [PySentry](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/tool/security/pysentry)
 - Web
-    - Python
-        - FastAPI
-            - [SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/python/fastapi/sse)
+    - FastAPI
+        - [SSE](https://github.com/pabroux/mini-code-tutorials/tree/master/tutorial/web/fastapi/sse)

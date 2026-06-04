@@ -5,6 +5,7 @@ Try it:
     python cli_parser.py Alice --shout --repeat 3
     python cli_parser.py Alice -sr 2
     python cli_parser.py --version
+    python cli_parser.py --help
 """
 
 import argparse

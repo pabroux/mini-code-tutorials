@@ -1,0 +1,7 @@
+[project]
+name = "mini-code-tutorials-pydantic-ai"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "pydantic-ai-slim[anthropic,typesafe]>=2.0.0",
+]

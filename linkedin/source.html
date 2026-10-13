@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=block" rel="stylesheet">
+<style>
+:root{--ink:#061314;--pink:#E520E9;--cream:#FBFFEA;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--ink);overflow:hidden}
+body{font-family:Inter,sans-serif;color:var(--cream);position:relative;padding:88px 80px 0;display:flex;flex-direction:column}
+.bg{position:absolute;right:-180px;bottom:-140px;width:760px;opacity:.06;transform:rotate(-12deg)}
+.logo{height:46px;display:block;align-self:flex-start}
+h1{font-family:"Inter Display",Inter,sans-serif;font-weight:800;font-size:100px;line-height:1.02;letter-spacing:-2.8px;margin-top:80px}
+h1 span{color:var(--pink)}
+.sheet{position:relative;margin-top:110px;background:var(--cream);color:var(--ink);border-radius:6px;padding:40px 48px 36px;transform:rotate(-1.6deg);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.head{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:19px;font-weight:600;letter-spacing:2px;border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:10px}
+.head b{color:var(--pink)}
+.row{display:flex;align-items:center;padding:26px 0;border-bottom:1.5px dashed rgba(6,19,20,.25)}
+.n{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:22px;width:52px;color:rgba(6,19,20,.45)}
+.q{font-weight:700;font-size:30px;width:300px;letter-spacing:-.3px}
+.opts{display:flex;gap:30px;font-family:"JetBrains Mono",monospace;font-size:22px}
+.o{display:flex;align-items:center;gap:10px;color:rgba(6,19,20,.55)}
+.o.on{color:var(--ink);font-weight:700}
+.b{width:30px;height:30px;border:2.5px solid var(--ink);border-radius:50%;display:inline-block;position:relative}
+.on .b::after{content:"";position:absolute;inset:2px;background:var(--pink);border-radius:47% 53% 44% 56%/52% 45% 55% 48%;transform:rotate(18deg) scale(1.08)}
+.p{font-size:17px;color:var(--pink);font-weight:700;margin-left:2px}
+.call{font-family:"JetBrains Mono",monospace;font-size:22px;padding:24px 0 24px 52px;border-bottom:1.5px dashed rgba(6,19,20,.25)}
+.call i{font-style:normal;color:rgba(6,19,20,.55)}
+.call b{background:var(--ink);color:var(--cream);padding:4px 10px;border-radius:4px;font-weight:600}
+.call b em{font-style:normal;color:var(--pink)}
+.row:last-child{border-bottom:none}
+.foot{position:absolute;left:80px;right:80px;bottom:72px;display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:20px;color:rgba(251,255,234,.6)}
+</style></head><body>
+<img class="logo" src="pydantic-ai-dark.svg">
+<h1>It can't write.<br><span>It still calls tools.</span></h1>
+
+<div class="sheet">
+  <div class="head"><span>ANSWER SHEET</span><span>model: <b>jev</b></span></div>
+  <div class="row"><span class="n">01</span><span class="q">Tool or answer?</span>
+    <div class="opts"><span class="o on"><i class="b"></i>tool</span><span class="o"><i class="b"></i>answer</span></div></div>
+  <div class="row"><span class="n">02</span><span class="q">Which tool?</span>
+    <div class="opts"><span class="o on"><i class="b"></i>recent_reviews</span></div></div>
+  <div class="row"><span class="n">03</span><span class="q">Which value?</span>
+    <div class="opts"><span class="o on"><i class="b"></i>Extract</span><span class="o"><i class="b"></i>Compose</span></div></div>
+  <div class="call"><i>→ Pydantic AI calls </i><b>recent_reviews(<em>"Extract"</em>)</b></div>
+  <div class="row"><span class="n">04</span><span class="q">Sentiment?</span>
+    <div class="opts"><span class="o on"><i class="b"></i>positive<span class="p">0.97</span></span><span class="o"><i class="b"></i>neutral</span><span class="o"><i class="b"></i>negative</span></div></div>
+</div>
+
+<div class="foot"><span>System One models, in Pydantic AI</span><span>tutorial in comments ↓</span></div>
+</body></html>

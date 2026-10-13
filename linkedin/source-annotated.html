@@ -1,0 +1,82 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Caveat:wght@600;700&display=block" rel="stylesheet">
+<style>
+:root{--ink:#061314;--pink:#E520E9;--cream:#FBFFEA;--panel:#0c1d1e;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--ink);overflow:hidden}
+body{font-family:Inter,sans-serif;color:var(--cream);position:relative;padding:80px 72px 0}
+.logo{height:42px;display:block}
+h1{font-family:"Inter Display",Inter,sans-serif;font-weight:800;font-size:66px;line-height:1.05;letter-spacing:-1.8px;margin-top:52px}
+h1 span{color:var(--pink)}
+.panel{position:relative;margin-top:52px;background:var(--panel);border:1px solid rgba(251,255,234,.09);border-radius:14px;padding:22px 0 26px}
+.tab{font-family:"JetBrains Mono",monospace;font-size:16px;color:rgba(251,255,234,.5);padding:0 32px 16px;border-bottom:1px solid rgba(251,255,234,.07);margin-bottom:16px}
+pre{font-family:"JetBrains Mono",monospace;font-size:19px;line-height:31px;padding:0 32px;color:#d9e0cf}
+.k{color:#ff79c6}.c{color:#8be9fd}.s{color:#f1e58a}.d{color:#7f8f86;font-style:italic}.f{color:#b3f08a}.n{color:#c8a6ff}
+.mark{background:linear-gradient(transparent 55%,rgba(229,32,233,.35) 55%);}
+.note{position:absolute;font-family:Caveat,cursive;font-weight:700;font-size:33px;line-height:1;color:var(--pink);white-space:nowrap;transform:rotate(-2deg)}
+svg.arrows{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.foot{position:absolute;left:72px;right:72px;bottom:64px;display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:19px;color:rgba(251,255,234,.55)}
+</style></head><body>
+<img class="logo" src="pydantic-ai-dark.svg">
+<h1>If you know FastAPI,<br><span>you already know it.</span></h1>
+<div class="panel" id="panel">
+<div class="tab">agent.py</div>
+<pre><span class="k">class</span> <span class="c">Sentiment</span>(BaseModel):
+    label: Literal[<span class="s">'positive'</span>, <span class="s">'negative'</span>, <span class="s">'neutral'</span>]
+    score: <span class="c">float</span> = Field(ge=-<span class="n">1</span>, le=<span class="n">1</span>)<span id="a1"></span>
+
+<span class="k">@dataclass</span>
+<span class="k">class</span> <span class="c">Deps</span>:
+    customer_name: <span class="c">str</span><span id="a2"></span>
+
+reviews = Capability[Deps](id=<span class="s">'reviews'</span>)<span id="a3"></span>
+
+<span class="k">@reviews.tool</span>
+<span class="k">def</span> <span class="f">recent_reviews</span>(ctx: RunContext[Deps], product: <span class="c">str</span>):
+    <span class="d">"""Fetch recent review snippets."""</span><span id="a4"></span>
+    ...
+
+agent = Agent(
+    <span class="mark"><span class="s">"anthropic:claude-sonnet-5-5"</span></span>,<span id="a5"></span>
+    output_type=Sentiment,
+    deps_type=Deps,
+    retries=<span class="n">3</span>,<span id="a6"></span>
+    capabilities=[reviews],
+)</pre>
+</div>
+<div class="note" id="n1">validated output</div>
+<div class="note" id="n2">typed dependencies</div>
+<div class="note" id="n3">tools + instructions, bundled</div>
+<div class="note" id="n4">docstring = description</div>
+<div class="note" id="n5">any LLM… or Jev, System One</div>
+<div class="note" id="n6">errors go back, it retries</div>
+<svg class="arrows" id="svg"></svg>
+<div class="foot"><span>a full agent, in 20 lines</span><span>tutorial in comments ↓</span></div>
+<script>
+document.fonts.ready.then(()=>{
+  const svg=document.getElementById('svg');
+  const NOTE_X=650; // left edge of notes column
+  for(let i=1;i<=6;i++){
+    const a=document.getElementById('a'+i).getBoundingClientRect();
+    const n=document.getElementById('n'+i);
+    const y=a.top+a.height/2;
+    let x=Math.max(NOTE_X, a.right+80);
+    n.style.left=x+'px'; n.style.top=(y-20)+'px';
+    const r=n.getBoundingClientRect();
+    if(r.right>1040){ n.style.left=(1040-r.width)+'px'; }
+    const r2=n.getBoundingClientRect();
+    const sx=r2.left-10, sy=r2.top+r2.height/2+2, ex=a.right+12, ey=y;
+    const mx=(sx+ex)/2;
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',`M${sx},${sy} C${mx},${sy-14} ${mx},${ey+10} ${ex},${ey}`);
+    p.setAttribute('stroke','#E520E9');p.setAttribute('stroke-width','2.5');p.setAttribute('fill','none');p.setAttribute('stroke-linecap','round');
+    svg.appendChild(p);
+    const h=document.createElementNS('http://www.w3.org/2000/svg','path');
+    h.setAttribute('d',`M${ex+9},${ey-7} L${ex},${ey} L${ex+10},${ey+5}`);
+    h.setAttribute('stroke','#E520E9');h.setAttribute('stroke-width','2.5');h.setAttribute('fill','none');h.setAttribute('stroke-linecap','round');h.setAttribute('stroke-linejoin','round');
+    svg.appendChild(h);
+  }
+});
+</script>
+</body></html>

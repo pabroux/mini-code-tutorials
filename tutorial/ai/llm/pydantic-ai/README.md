@@ -39,7 +39,7 @@ In Pydantic AI, an agent built for one runs on the other by changing the model. 
 - [uv](https://docs.astral.sh/uv/) or [mise](https://mise.jdx.dev).
 
 > [!IMPORTANT]
-> You'll need an [`ANTHROPIC_API_KEY` environment variable](https://platform.claude.com/settings/keys) for `llm_agent.py`, and a `TYPESAFE_API_KEY` from your TypeSafe account for `jev_agent.py`.
+> You'll need an `ANTHROPIC_API_KEY` environment variable for `llm_agent.py`, and a `TYPESAFE_API_KEY` one from your TypeSafe account for `jev_agent.py`.
 
 ## Installation
 

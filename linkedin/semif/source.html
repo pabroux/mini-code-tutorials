@@ -16,7 +16,8 @@ h1{font:900 80px/1.16 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.05
 .kicks{margin-top:28px;display:flex;gap:14px;flex-wrap:nowrap}
 .kick.dark{background:var(--ink);color:var(--lime)}
 .kick{display:inline-block;white-space:nowrap;background:var(--pink);color:var(--ink);font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;padding:6px 9px;box-shadow:3px 3px 0 var(--ink);border:2px solid var(--ink)}
-h1 mark{background:linear-gradient(transparent 22%,var(--lime) 22%);color:var(--ink);padding:0 .08em}
+h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
+h1 .over{position:relative;z-index:1}
 .note{margin-top:30px;background:var(--panel);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:20px 24px;font-size:18px;line-height:1.55;font-weight:700}
 .note .l{color:var(--muted)}
 .note .opts{margin-top:6px;display:flex;gap:28px}
@@ -45,7 +46,7 @@ h1 mark{background:linear-gradient(transparent 22%,var(--lime) 22%);color:var(--
 </div>
 
 <div class="kicks"><div class="kick">Open-source code that turns an LLM into a decision model</div><div class="kick dark">Out the day after Jev</div></div>
-<h1>Mask every token.<br>Except <mark>A, B, C.</mark></h1>
+<h1><span class="over">Mask every token.</span><br>Except <mark>A, B, C.</mark></h1>
 
 <div class="note">
   <div><span class="l">evidence:</span> Doc needs 1.21 gigawatts. The only source is the lightning that strikes the clock tower on Saturday at 10:04 pm.</div>

@@ -12,9 +12,11 @@ body{color:var(--ink);position:relative;padding:50px 64px 0;font-family:"Liberat
 .brand{font-size:50px;font-weight:700;letter-spacing:-.08em;line-height:1}
 .brand small{display:block;font-size:15px;letter-spacing:.02em;font-weight:700;color:var(--muted);margin-top:6px}
 .tagline{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:right;line-height:1.5}
-h1{font:900 80px/1.1 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.055em;margin-top:14px}
-.kick{margin-top:28px;display:inline-block;background:var(--pink);color:var(--ink);font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:6px 10px;box-shadow:3px 3px 0 var(--ink);border:2px solid var(--ink)}
-h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
+h1{font:900 80px/1.16 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.055em;margin-top:14px}
+.kicks{margin-top:28px;display:flex;gap:14px;flex-wrap:nowrap}
+.kick.dark{background:var(--ink);color:var(--lime)}
+.kick{display:inline-block;white-space:nowrap;background:var(--pink);color:var(--ink);font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;padding:6px 9px;box-shadow:3px 3px 0 var(--ink);border:2px solid var(--ink)}
+h1 mark{background:linear-gradient(transparent 22%,var(--lime) 22%);color:var(--ink);padding:0 .08em}
 .note{margin-top:30px;background:var(--panel);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:20px 24px;font-size:18px;line-height:1.55;font-weight:700}
 .note .l{color:var(--muted)}
 .note .opts{margin-top:6px;display:flex;gap:28px}
@@ -42,7 +44,7 @@ h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
   <div class="tagline">Semantic ifs<br>from open models.</div>
 </div>
 
-<div class="kick">Open-source code that turns an LLM into a decision model</div>
+<div class="kicks"><div class="kick">Open-source code that turns an LLM into a decision model</div><div class="kick dark">Out the day after Jev</div></div>
 <h1>Mask every token.<br>Except <mark>A, B, C.</mark></h1>
 
 <div class="note">

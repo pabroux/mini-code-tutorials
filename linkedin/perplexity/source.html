@@ -1,0 +1,68 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Caveat:wght@700&display=block" rel="stylesheet">
+<style>
+/* Concept palette (no brand): quiz-show night navy, stage gold, white text */
+:root{--bg:#0b1530;--gold:#f2b632;--text:#f4f1e6;--panel:#13224a;--muted:rgba(244,241,230,.6);}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--bg);overflow:hidden}
+body{color:var(--text);position:relative;padding:60px 64px 0;font-family:Inter,sans-serif}
+.verdict{margin-top:34px;background:var(--gold);color:var(--bg);padding:24px 28px;display:flex;justify-content:space-between;align-items:center}
+.verdict span{font:700 17px/1.5 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.04em}
+.verdict strong{font:900 40px/1.05 "Inter Display",Inter,sans-serif;letter-spacing:-.035em;text-align:right}
+.kick{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bg);background:var(--gold);padding:6px 10px}
+h1{font:900 74px/1.06 "Inter Display",Inter,sans-serif;letter-spacing:-.045em;margin-top:22px}
+h1 span{color:var(--gold)}
+.q{margin-top:40px;position:relative;height:84px;display:flex;align-items:center;justify-content:center;font:700 34px "Inter Display",Inter,sans-serif;letter-spacing:-.01em}
+.q::before{content:"";position:absolute;inset:0;background:var(--panel);border:3px solid var(--gold);clip-path:polygon(3% 0,97% 0,100% 50%,97% 100%,3% 100%,0 50%)}
+.q b{position:relative;z-index:1}
+.q u{text-decoration:none;border-bottom:4px solid var(--gold);padding:0 40px;margin-left:10px}
+.boards{display:flex;gap:28px;margin-top:38px}
+.board{flex:1}
+.who{font-family:"JetBrains Mono",monospace;font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.opt{position:relative;height:58px;margin-bottom:12px;display:flex;align-items:center;padding:0 30px;font:700 24px "JetBrains Mono",monospace}
+.opt::before{content:"";position:absolute;inset:0;background:var(--panel);border:2px solid rgba(242,182,50,.55);clip-path:polygon(5% 0,95% 0,100% 50%,95% 100%,5% 100%,0 50%)}
+.opt *{position:relative;z-index:1}
+.opt .l{color:var(--gold);width:40px}
+.opt .w{flex:1}
+.opt .p{font-weight:700}
+.opt.hit::before{background:var(--gold);border-color:var(--gold)}
+.opt.hit,.opt.hit .l{color:var(--bg)}
+.score{margin-top:16px;font-family:"JetBrains Mono",monospace;font-size:18px;color:var(--muted)}
+.score b{display:block;font:900 64px/1 "Inter Display",Inter,sans-serif;letter-spacing:-.03em;color:var(--text);margin-top:6px}
+.board.sure .score b{color:var(--gold)}
+.formula{margin-top:38px;border-top:2px solid rgba(244,241,230,.18);border-bottom:2px solid rgba(244,241,230,.18);padding:18px 0;display:flex;justify-content:space-between;align-items:center;font-family:"JetBrains Mono",monospace;font-size:22px}
+.formula span{color:var(--muted);font-size:17px;letter-spacing:.04em;text-transform:uppercase}
+.hand{display:block;width:fit-content;margin:22px 0 0 auto;font-family:Caveat,cursive;font-weight:700;font-size:36px;line-height:1.05;color:var(--gold);transform:rotate(-3deg);text-align:right}
+.foot{position:absolute;left:64px;right:64px;bottom:54px;display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:17px;color:var(--muted);border-top:2px solid rgba(244,241,230,.18);padding-top:12px}
+</style></head><body>
+<div class="kick">LLM basics · perplexity</div>
+<h1>How many answers<br><span>is the model torn between?</span></h1>
+
+<div class="q"><b>“May the Force be with <u></u>”</b></div>
+
+<div class="boards">
+  <div class="board">
+    <div class="who">Unsure model</div>
+    <div class="opt"><span class="l">A</span><span class="w">you</span><span class="p">25%</span></div>
+    <div class="opt"><span class="l">B</span><span class="w">me</span><span class="p">25%</span></div>
+    <div class="opt"><span class="l">C</span><span class="w">us</span><span class="p">25%</span></div>
+    <div class="opt"><span class="l">D</span><span class="w">them</span><span class="p">25%</span></div>
+    <div class="score">perplexity on this token<b>4</b></div>
+  </div>
+  <div class="board sure">
+    <div class="who">Sure model</div>
+    <div class="opt hit"><span class="l">A</span><span class="w">you</span><span class="p">97%</span></div>
+    <div class="opt"><span class="l">B</span><span class="w">me</span><span class="p">1%</span></div>
+    <div class="opt"><span class="l">C</span><span class="w">us</span><span class="p">1%</span></div>
+    <div class="opt"><span class="l">D</span><span class="w">them</span><span class="p">1%</span></div>
+    <div class="score">perplexity on this token<b>1.03</b></div>
+  </div>
+</div>
+
+<div class="formula"><span>the formula</span>exp( − average log p(right token) )</div>
+<div class="hand">only compare models with the same tokenizer:<br>otherwise it's not the same quiz</div>
+<div class="verdict"><span>Perplexity 1<br>= no hesitation.</span><strong>Lower perplexity,<br>less surprised by real text.</strong></div>
+
+<div class="foot"><span>per-token perplexity = 1 / p(right token)</span><span>LLM basics</span></div>
+</body></html>

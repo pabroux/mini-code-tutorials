@@ -12,9 +12,10 @@ body{color:var(--ink);position:relative;padding:60px 64px 0;font-family:"Liberat
 .brand{font-size:50px;font-weight:700;letter-spacing:-.08em;line-height:1}
 .brand small{display:block;font-size:15px;letter-spacing:.02em;font-weight:700;color:var(--muted);margin-top:6px}
 .tagline{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:right;line-height:1.5}
-h1{font:900 88px/1.1 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.055em;margin-top:44px}
+h1{font:900 88px/1.1 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.055em;margin-top:14px}
+.kick{margin-top:28px;display:inline-block;background:var(--pink);color:var(--ink);font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:6px 10px;box-shadow:3px 3px 0 var(--ink);border:2px solid var(--ink)}
 h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
-.note{margin-top:36px;background:var(--panel);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:20px 24px;font-size:18px;line-height:1.55;font-weight:700}
+.note{margin-top:30px;background:var(--panel);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:20px 24px;font-size:18px;line-height:1.55;font-weight:700}
 .note .l{color:var(--muted)}
 .note .opts{margin-top:6px;display:flex;gap:28px}
 .note .opts b{background:var(--ink);color:var(--paper);padding:0 6px;margin-right:6px}
@@ -31,21 +32,22 @@ h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
 .open.win{background:var(--lime)}
 .p{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:16px;font-weight:700}
 .hand{position:absolute;font-family:Caveat,cursive;font-weight:700;font-size:36px;color:var(--pink);transform:rotate(-4deg);white-space:nowrap}
-.verdict{margin-top:92px;background:var(--ink);color:var(--paper);padding:26px 28px;display:flex;justify-content:space-between;align-items:center}
+.verdict{margin-top:60px;background:var(--ink);color:var(--paper);padding:26px 28px;display:flex;justify-content:space-between;align-items:center}
 .verdict span{font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.5}
 .verdict strong{font:900 40px/1.05 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.035em;color:var(--lime);text-align:right}
 .foot{position:absolute;left:64px;right:64px;bottom:54px;display:flex;justify-content:space-between;font-size:16px;font-weight:700;color:var(--muted);border-top:2px solid var(--ink);padding-top:12px}
 </style></head><body>
 <div class="mast">
   <div class="brand">SemIf<small>formerly OpenJev</small></div>
-  <div class="tagline">Semantic ifs from open models,<br>on a 3090 at home.</div>
+  <div class="tagline">Semantic ifs<br>from open models.</div>
 </div>
 
+<div class="kick">An open-source decision model · out the day after Jev</div>
 <h1>Mask every token.<br>Except <mark>A, B, C.</mark></h1>
 
 <div class="note">
-  <div><span class="l">evidence:</span> The workshop confirms it fitted the replacement lenses to the customer's glasses.</div>
-  <div><span class="l">claim:</span> the replacement lenses have been fitted.</div>
+  <div><span class="l">evidence:</span> Doc needs 1.21 gigawatts. The only source is the lightning that strikes the clock tower on Saturday at 10:04 pm.</div>
+  <div><span class="l">claim:</span> Marty can get back to 1985 before Saturday night.</div>
   <div class="opts"><span><b>A</b>insufficient</span><span><b>B</b>supported</span><span><b>C</b>contradicted</span></div>
 </div>
 
@@ -57,15 +59,15 @@ h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
   <strong>Just change<br>your point of view.</strong>
 </div>
 
-<div class="foot"><span>Qwen3.5-4B · 1 forward pass · 0 tokens generated</span><span>repo in comments ↓</span></div>
+<div class="foot"><span>illustrative scores · 1 forward pass · 0 tokens generated</span><span>repo in comments ↓</span></div>
 <script>
 const rows=["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"];
-const prob={A:"0.010",B:"0.990",C:"<0.001"};
+const prob={A:"0.04",B:"0.01",C:"0.95"};
 const kb=document.getElementById('kb');
 let seed=11; const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
 rows.forEach((r,i)=>{const row=document.createElement('div');row.className='row r'+(i+1);
   for(const ch of r){const k=document.createElement('div');k.className='key';k.textContent=ch;
-    if(prob[ch]){k.classList.add('open');if(ch==='B')k.classList.add('win');
+    if(prob[ch]){k.classList.add('open');if(ch==='C')k.classList.add('win');
       const p=document.createElement('div');p.className='p';p.textContent=prob[ch];k.appendChild(p);}
     else{k.classList.add('tape');k.style.setProperty('--r',(rnd()*10-5).toFixed(1)+'deg');}
     row.appendChild(k);}

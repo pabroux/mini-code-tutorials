@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Caveat:wght@700&display=block" rel="stylesheet">
+<style>
+/* Concept palette: metro-map paper, ink, SemIf line blue, decode line red */
+:root{--paper:#F4F1E8;--ink:#15181D;--blue:#2563EB;--red:#D9412B;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--paper);overflow:hidden}
+body{font-family:Inter,sans-serif;color:var(--ink);position:relative;padding:76px 72px 0}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:20px;letter-spacing:1px;color:rgba(21,24,29,.55)}
+h1{font-family:"Inter Display",Inter,sans-serif;font-weight:800;font-size:57px;line-height:1.08;letter-spacing:-1.6px;margin-top:22px}
+h1 span{color:var(--blue)}
+svg{position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:visible}
+.lbl{font-family:"JetBrains Mono",monospace}
+.foot{position:absolute;left:72px;right:72px;bottom:60px;display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:18px;color:rgba(21,24,29,.55)}
+</style></head><body>
+<div class="kicker">PREFILL vs DECODE · how SemIf answers</div>
+<h1>Stop reading what the model writes.<br><span>Read what it was about to say.</span></h1>
+<svg id="map"></svg>
+<div class="foot"><span>SemIf (formerly OpenJev) · Qwen3.5-4B · RTX 3090 · 21 questions</span><span>repo in comments ↓</span></div>
+<script>
+const NS='http://www.w3.org/2000/svg', svg=document.getElementById('map');
+const el=(tag,attrs,text)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;svg.appendChild(e);return e;};
+const BLUE='#2563EB', RED='#D9412B', INK='#15181D', PAPER='#F4F1E8';
+
+// Decode line: a long serpentine ride from the PREFILL interchange
+const X0=150, Y0=455, L=150, R=975, ROW=128;
+const rows=[0,1,2,3,4].map(i=>Y0+150+i*ROW);
+let d=`M${X0},${Y0} L${X0},${rows[0]-30} Q${X0},${rows[0]} ${X0+30},${rows[0]} L${R-64},${rows[0]}`;
+for(let i=1;i<rows.length;i++){
+  const goingLeft = i%2===1;
+  if(goingLeft){ d+=` Q${R},${rows[i-1]} ${R},${rows[i-1]+64} Q${R},${rows[i]} ${R-64},${rows[i]} L${L+64},${rows[i]}`; }
+  else{ d+=` Q${L},${rows[i-1]} ${L},${rows[i-1]+64} Q${L},${rows[i]} ${L+64},${rows[i]} L${i===rows.length-1?640:R-64},${rows[i]}`; }
+}
+const decode=el('path',{d,stroke:RED,'stroke-width':14,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'});
+
+// 111 stops, one per generated token
+const len=decode.getTotalLength(), start=200, N=111, step=(len-start-10)/(N-1);
+const tokens=[['[','0.49 s'],['⏎','0.53 s'],['␣','0.58 s'],[' "','0.62 s'],['yes','0.66 s'],['",','0.70 s']];
+for(let i=0;i<N;i++){
+  const p=decode.getPointAtLength(start+i*step), q=decode.getPointAtLength(start+i*step+1);
+  const ang=Math.atan2(q.y-p.y,q.x-p.x)*180/Math.PI+90;
+  const dx=q.x-p.x, dy=q.y-p.y, m=Math.hypot(dx,dy)||1, nx=-dy/m, ny=dx/m;
+  el('line',{x1:p.x-nx*5,y1:p.y-ny*5,x2:p.x+nx*5,y2:p.y+ny*5,stroke:PAPER,'stroke-width':3.5,'stroke-linecap':'round'});
+  if(i<tokens.length){
+    const t=el('text',{x:p.x+4,y:p.y-22,class:'lbl','font-size':17,'font-weight':700,fill:INK,transform:`rotate(-40 ${p.x+4} ${p.y-22})`},`${tokens[i][0]}  ${tokens[i][1]}`);
+  }
+}
+// terminus of the decode line
+const end=decode.getPointAtLength(len);
+el('circle',{cx:end.x,cy:end.y,r:15,fill:PAPER,stroke:INK,'stroke-width':6});
+el('text',{x:end.x-20,y:end.y+52,class:'lbl','font-size':20,'font-weight':700,fill:INK},'end of JSON · 5.3 s');
+el('text',{x:end.x-20,y:end.y+78,class:'lbl','font-size':17,fill:RED},'111 stops, one per token');
+// line name
+el('text',{x:X0+60,y:rows[0]+48,class:'lbl','font-size':18,'font-weight':700,fill:RED},'DECODE LINE · writes the answer, one token per stop');
+
+// SemIf line: gets off right at PREFILL
+el('path',{d:`M${X0},${Y0} L${X0+230},${Y0}`,stroke:BLUE,'stroke-width':14,fill:'none','stroke-linecap':'round'});
+el('circle',{cx:X0+230,cy:Y0,r:15,fill:PAPER,stroke:INK,'stroke-width':6});
+el('text',{x:X0+262,y:Y0-6,class:'lbl','font-size':20,'font-weight':700,fill:INK},'read option scores · 1.0 s');
+el('text',{x:X0+262,y:Y0+20,class:'lbl','font-size':17,fill:BLUE},'SEMIF LINE · 0 tokens written');
+
+// PREFILL interchange
+el('rect',{x:X0-46,y:Y0-28,width:92,height:56,rx:28,fill:PAPER,stroke:INK,'stroke-width':7});
+el('text',{x:X0-70,y:Y0-58,class:'lbl','font-size':24,'font-weight':700,fill:INK},'PREFILL');
+el('text',{x:X0-70,y:Y0-84,class:'lbl','font-size':16,fill:'rgba(21,24,29,.6)'},'reads the whole prompt in one pass');
+
+// handwritten note
+el('text',{x:700,y:Y0-88,'font-family':'Caveat','font-size':40,'font-weight':700,fill:BLUE,transform:`rotate(-4 700 ${Y0-88})`},'SemIf gets off here.');
+el('path',{d:`M720,${Y0-70} C640,${Y0-60} ${X0+300},${Y0-70} ${X0+238},${Y0-24}`,stroke:BLUE,'stroke-width':2.5,fill:'none','stroke-linecap':'round'});
+el('path',{d:`M${X0+236},${Y0-38} L${X0+238},${Y0-24} L${X0+251},${Y0-30}`,stroke:BLUE,'stroke-width':2.5,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'});
+</script>
+</body></html>

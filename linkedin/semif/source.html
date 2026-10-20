@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Caveat:wght@700&display=block" rel="stylesheet">
+<style>
+/* Concept palette (no brand logo): charcoal desk, masking-tape cream, one blue accent */
+:root{--ink:#111418;--text:#F2F0E8;--accent:#3B82F6;--tape:#E7D9AE;--paper:#FBF8EE;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--ink);overflow:hidden}
+body{font-family:Inter,sans-serif;color:var(--text);position:relative;padding:76px 72px 0}
+.kicker{font-family:"JetBrains Mono",monospace;font-size:20px;letter-spacing:1px;color:rgba(242,240,232,.6)}
+h1{font-family:"Inter Display",Inter,sans-serif;font-weight:800;font-size:92px;line-height:1.02;letter-spacing:-2.6px;margin-top:28px}
+h1 span{color:var(--accent)}
+.note{position:relative;margin-top:56px;background:var(--paper);color:var(--ink);padding:26px 32px;border-radius:4px;transform:rotate(-1.2deg);box-shadow:0 20px 40px rgba(0,0,0,.4);font-family:"JetBrains Mono",monospace;font-size:19px;line-height:1.55}
+.note .lbl{color:rgba(17,20,24,.45)}
+.note .opts{margin-top:8px;display:flex;gap:26px}
+.note .opts b{color:var(--accent)}
+.kb{position:relative;margin-top:60px;background:#1b1f25;border:1px solid rgba(242,240,232,.08);border-radius:18px;padding:22px 22px 26px}
+.row{display:flex;gap:10px;margin-bottom:10px}
+.row.r2{padding-left:34px}.row.r3{padding-left:76px}
+.key{position:relative;width:82px;height:82px;border-radius:10px;background:#2a2f37;box-shadow:inset 0 -4px 0 rgba(0,0,0,.35);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:28px;color:rgba(242,240,232,.55);display:flex;align-items:flex-start;justify-content:flex-start;padding:10px 12px}
+.space{width:470px;margin-left:190px}
+.tape::after{content:"";position:absolute;left:-7px;right:-7px;top:22px;height:40px;background:var(--tape);opacity:.94;transform:rotate(var(--r));
+  clip-path:polygon(0 8%,4% 0,8% 10%,12% 2%,100% 0,97% 12%,100% 25%,96% 40%,100% 55%,97% 72%,100% 88%,96% 100%,10% 100%,6% 90%,2% 100%,0 85%,3% 60%,0 40%,4% 22%);
+  box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.open{background:#20324f;color:var(--text);box-shadow:inset 0 -4px 0 rgba(0,0,0,.35),0 0 0 2px var(--accent)}
+.open.win{background:var(--accent);color:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.25),0 0 26px rgba(59,130,246,.75)}
+.p{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:16px;font-weight:600}
+.hand{position:absolute;font-family:Caveat,cursive;font-weight:700;font-size:34px;color:var(--tape);transform:rotate(-3deg);white-space:nowrap}
+.stats{margin-top:150px;font-family:"JetBrains Mono",monospace;font-size:19px;color:rgba(242,240,232,.75)}
+.stats b{color:var(--text)}
+.foot{position:absolute;left:72px;right:72px;bottom:64px;display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:19px;color:rgba(242,240,232,.5)}
+</style></head><body>
+<div class="kicker">SemIf (formerly OpenJev) · how it decides</div>
+<h1>Mask every token.<br><span>Except A, B, C.</span></h1>
+
+<div class="note">
+  <div><span class="lbl">evidence:</span> The workshop confirms it fitted the replacement lenses to the customer's glasses.</div>
+  <div><span class="lbl">claim:</span> the replacement lenses have been fitted.</div>
+  <div class="opts"><span><b>A</b> insufficient</span><span><b>B</b> supported</span><span><b>C</b> contradicted</span></div>
+</div>
+
+<div class="kb" id="kb"></div>
+<div class="hand" id="hand">softmax over 3 logits only</div>
+
+<div class="stats">Qwen3.5-4B · <b>134</b> tokens in · <b>1</b> forward pass · <b>0</b> tokens generated</div>
+
+<div class="foot"><span>no decode loop, no JSON</span><span>repo in comments ↓</span></div>
+<script>
+const rows=["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"];
+const prob={A:"0.010",B:"0.990",C:"<0.001"};
+const kb=document.getElementById('kb');
+let seed=7; const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+rows.forEach((r,i)=>{const row=document.createElement('div');row.className='row r'+(i+1);
+  for(const ch of r){const k=document.createElement('div');k.className='key';k.textContent=ch;
+    if(prob[ch]){k.classList.add('open');if(ch==='B')k.classList.add('win');
+      const p=document.createElement('div');p.className='p';p.textContent=prob[ch];k.appendChild(p);}
+    else{k.classList.add('tape');k.style.setProperty('--r',(rnd()*10-5).toFixed(1)+'deg');}
+    row.appendChild(k);}
+  kb.appendChild(row);});
+const sp=document.createElement('div');sp.className='row';const s=document.createElement('div');
+s.className='key space tape';s.style.setProperty('--r','-1.5deg');sp.appendChild(s);kb.appendChild(sp);
+document.fonts.ready.then(()=>{const b=document.querySelector('.win').getBoundingClientRect();const h=document.getElementById('hand');
+  const kbr=document.getElementById('kb').getBoundingClientRect();
+  h.style.left=(b.left-40)+'px';h.style.top=(kbr.bottom+38)+'px';
+  const r=h.getBoundingClientRect();
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('style','position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:visible');
+  const x=b.left+b.width/2, y0=r.top-6, y1=b.bottom+8;
+  svg.innerHTML=`<path d="M${x+30},${y0} C${x+40},${y0-40} ${x-10},${y1+40} ${x},${y1}" stroke="#E7D9AE" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M${x-8},${y1+9} L${x},${y1} L${x+9},${y1+8}" stroke="#E7D9AE" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+  document.body.appendChild(svg);});
+</script>
+</body></html>

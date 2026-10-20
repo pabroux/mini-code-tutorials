@@ -7,32 +7,32 @@
 :root{--ink:#171715;--paper:#f7f6f0;--panel:#fffefa;--lime:#d4ff3f;--pink:#ee5ba6;--muted:#66645e;--tape:#e6d6a8;}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1350px;background:var(--paper);overflow:hidden}
-body{color:var(--ink);position:relative;padding:60px 64px 0;font-family:"Liberation Mono",ui-monospace,monospace}
+body{color:var(--ink);position:relative;padding:50px 64px 0;font-family:"Liberation Mono",ui-monospace,monospace}
 .mast{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:16px;border-bottom:2px solid var(--ink)}
 .brand{font-size:50px;font-weight:700;letter-spacing:-.08em;line-height:1}
 .brand small{display:block;font-size:15px;letter-spacing:.02em;font-weight:700;color:var(--muted);margin-top:6px}
 .tagline{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;text-align:right;line-height:1.5}
-h1{font:900 88px/1.1 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.055em;margin-top:14px}
+h1{font:900 80px/1.1 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.055em;margin-top:14px}
 .kick{margin-top:28px;display:inline-block;background:var(--pink);color:var(--ink);font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:6px 10px;box-shadow:3px 3px 0 var(--ink);border:2px solid var(--ink)}
 h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
 .note{margin-top:30px;background:var(--panel);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:20px 24px;font-size:18px;line-height:1.55;font-weight:700}
 .note .l{color:var(--muted)}
 .note .opts{margin-top:6px;display:flex;gap:28px}
 .note .opts b{background:var(--ink);color:var(--paper);padding:0 6px;margin-right:6px}
-.kb{position:relative;margin-top:34px;border:2px solid var(--ink);background:#ecebe4;padding:18px 18px 20px}
+.kb{position:relative;margin-top:28px;border:2px solid var(--ink);background:#ecebe4;padding:14px 18px 14px}
 .row{display:flex;gap:9px;margin-bottom:9px}
 .r2{padding-left:30px}.r3{padding-left:70px}
-.key{position:relative;width:83px;height:82px;background:var(--panel);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-size:26px;font-weight:700;padding:6px 10px;color:rgba(23,23,21,.55)}
-.space{width:470px;height:52px;margin-left:200px;margin-bottom:0}
-.tape::after{content:"";position:absolute;left:-8px;right:-8px;top:23px;height:36px;background:var(--tape);opacity:.96;transform:rotate(var(--r));
+.key{position:relative;width:83px;height:72px;background:var(--panel);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-size:26px;font-weight:700;padding:6px 10px;color:rgba(23,23,21,.55)}
+.space{width:470px;height:44px;margin-left:200px;margin-bottom:0}
+.tape::after{content:"";position:absolute;left:-8px;right:-8px;top:18px;height:34px;background:var(--tape);opacity:.96;transform:rotate(var(--r));
   clip-path:polygon(0 8%,4% 0,8% 10%,12% 2%,100% 0,97% 12%,100% 25%,96% 40%,100% 55%,97% 72%,100% 88%,96% 100%,10% 100%,6% 90%,2% 100%,0 85%,3% 60%,0 40%,4% 22%);
   box-shadow:0 1px 3px rgba(0,0,0,.2)}
 .space.tape::after{top:8px}
 .open{color:var(--ink)}
 .open.win{background:var(--lime)}
 .p{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:16px;font-weight:700}
-.hand{position:absolute;font-family:Caveat,cursive;font-weight:700;font-size:36px;color:var(--pink);transform:rotate(-4deg);white-space:nowrap}
-.verdict{margin-top:60px;background:var(--ink);color:var(--paper);padding:26px 28px;display:flex;justify-content:space-between;align-items:center}
+.hand{display:block;width:fit-content;margin:14px 10px 0 auto;font-family:Caveat,cursive;font-weight:700;font-size:33px;line-height:1.05;color:var(--pink);transform:rotate(-3deg);text-align:right}
+.verdict{margin-top:30px;background:var(--ink);color:var(--paper);padding:20px 28px;display:flex;justify-content:space-between;align-items:center}
 .verdict span{font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;line-height:1.5}
 .verdict strong{font:900 40px/1.05 "Inter Display",Inter,Arial,sans-serif;letter-spacing:-.035em;color:var(--lime);text-align:right}
 .foot{position:absolute;left:64px;right:64px;bottom:54px;display:flex;justify-content:space-between;font-size:16px;font-weight:700;color:var(--muted);border-top:2px solid var(--ink);padding-top:12px}
@@ -42,7 +42,7 @@ h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
   <div class="tagline">Semantic ifs<br>from open models.</div>
 </div>
 
-<div class="kick">An open-source decision model · out the day after Jev</div>
+<div class="kick">Open-source code that turns an LLM into a decision model</div>
 <h1>Mask every token.<br>Except <mark>A, B, C.</mark></h1>
 
 <div class="note">
@@ -52,14 +52,14 @@ h1 mark{background:var(--lime);color:var(--ink);padding:0 .08em}
 </div>
 
 <div class="kb" id="kb"></div>
-<div class="hand" id="hand">softmax over 3 logits only</div>
+<div class="hand" id="hand">softmax over 3 logits only<br>= one confidence score per option</div>
 
 <div class="verdict">
   <span>No training.<br>No decoding.</span>
   <strong>Just change<br>your point of view.</strong>
 </div>
 
-<div class="foot"><span>illustrative scores · 1 forward pass · 0 tokens generated</span><span>repo in comments ↓</span></div>
+<div class="foot"><span>1 forward pass · 0 tokens generated</span><span>repo in comments ↓</span></div>
 <script>
 const rows=["QWERTYUIOP","ASDFGHJKL","ZXCVBNM"];
 const prob={A:"0.04",B:"0.01",C:"0.95"};
@@ -76,11 +76,10 @@ const sp=document.createElement('div');sp.className='row';const s=document.creat
 s.className='key space tape';s.style.setProperty('--r','-1.2deg');sp.appendChild(s);kb.appendChild(sp);
 document.fonts.ready.then(()=>{
   const b=document.querySelector('.win').getBoundingClientRect(), kbr=kb.getBoundingClientRect(), h=document.getElementById('hand');
-  h.style.left=(b.right+60)+'px'; h.style.top=(kbr.bottom+16)+'px';
-  const r=h.getBoundingClientRect();
+    const r=h.getBoundingClientRect();
   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.setAttribute('style','position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:visible;pointer-events:none');
-  const sx=r.left-10, sy=r.top+r.height/2, ex=b.left+b.width/2+14, ey=b.bottom+10;
+  const sx=r.left-12, sy=r.top+r.height*0.3, ex=b.left+b.width/2+14, ey=b.bottom+10;
   svg.innerHTML=`<path d="M${sx},${sy} C${sx-60},${sy+6} ${ex+6},${ey+60} ${ex},${ey}" stroke="#ee5ba6" stroke-width="3" fill="none" stroke-linecap="round"/>
   <path d="M${ex-9},${ey+10} L${ex},${ey} L${ex+10},${ey+9}" stroke="#ee5ba6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
   document.body.appendChild(svg);});

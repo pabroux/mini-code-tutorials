@@ -1,0 +1,66 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Caveat:wght@700&display=block" rel="stylesheet">
+<style>
+/* Concept palette (no brand): school paper, ink navy, pencil orange for the neural "guess" */
+:root{--paper:#F6F2E8;--ink:#1B2433;--accent:#E8622C;--sheet:#FFFDF6;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--paper);overflow:hidden}
+body{color:var(--ink);position:relative;padding:58px 64px 0;font-family:Inter,sans-serif}
+.kick{display:inline-block;font:700 16px "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:6px 10px}
+h1{font:900 66px/1.08 "Inter Display",Inter,sans-serif;letter-spacing:-.045em;margin-top:22px}
+h1 .a{color:var(--accent)}
+.sheet{position:relative;margin-top:40px;height:580px;background-color:var(--sheet);
+  background-image:linear-gradient(rgba(27,36,51,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(27,36,51,.07) 1px,transparent 1px);
+  background-size:28px 28px;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transform:rotate(-1deg)}
+.sheet svg{position:absolute;left:24px;top:40px}
+.thm{position:absolute;left:30px;top:18px;font:700 17px "JetBrains Mono",monospace}
+.proof{position:absolute;left:470px;top:70px;right:28px;font:600 19px/1.9 "JetBrains Mono",monospace}
+.proof .h{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:rgba(27,36,51,.6);margin-bottom:6px}
+.proof div span{display:inline-block;width:30px;font-weight:700}
+.proof .q{margin-top:6px;border-top:2px solid var(--ink);padding-top:6px;font-weight:700}
+.note{position:absolute;font:700 34px/1.0 Caveat,cursive;color:var(--accent);transform:rotate(-5deg);white-space:nowrap}
+.stat{margin-top:52px;font:600 19px/1.55 "JetBrains Mono",monospace;border-left:5px solid var(--accent);padding:4px 0 4px 18px}
+.stat b{font-weight:800}
+.verdict{margin-top:40px;background:var(--ink);color:var(--paper);padding:24px 28px;display:flex;justify-content:space-between;align-items:center}
+.verdict span{font:700 17px/1.5 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.04em}
+.verdict strong{font:900 38px/1.08 "Inter Display",Inter,sans-serif;letter-spacing:-.03em;text-align:right}
+.verdict strong i{font-style:normal;color:var(--accent)}
+.foot{position:absolute;left:64px;right:64px;bottom:50px;display:flex;justify-content:space-between;font:600 16px "JetBrains Mono",monospace;color:rgba(27,36,51,.6);border-top:2px solid var(--ink);padding-top:12px}
+</style></head><body>
+<div class="kick">Neuro-symbolic AI</div>
+<h1>The network <span class="a">guesses the line.</span><br>The logic proves it.</h1>
+
+<div class="sheet">
+  <div class="thm">If AB = AC, then ∠B = ∠C.</div>
+  <svg width="420" height="500" viewBox="0 0 420 500">
+    <g fill="none" stroke="#1B2433" stroke-width="4" stroke-linejoin="round">
+      <path d="M210,70 L50,420 L370,420 Z"/>
+    </g>
+    <!-- equal-side ticks -->
+    <g stroke="#1B2433" stroke-width="4"><line x1="118" y1="238" x2="138" y2="250"/><line x1="282" y1="250" x2="302" y2="238"/>
+      <line x1="122" y1="427" x2="122" y2="413"/><line x1="298" y1="427" x2="298" y2="413"/></g>
+    <!-- the neural guess: auxiliary line AM, pencil style -->
+    <path d="M210,74 C211,180 208,300 210,416" stroke="#E8622C" stroke-width="4" stroke-dasharray="14 10" fill="none" stroke-linecap="round"/>
+    <circle cx="210" cy="420" r="7" fill="#E8622C"/>
+    <g font-family="Inter" font-weight="800" font-size="28" fill="#1B2433">
+      <text x="200" y="56">A</text><text x="20" y="440">B</text><text x="380" y="440">C</text>
+      <text x="200" y="470" fill="#E8622C">M</text></g>
+  </svg>
+  <div class="note" style="left:560px;top:400px">neural model:<br>"what if we draw AM?"</div>
+  <svg class="arr" width="1000" height="600" style="position:absolute;left:0;top:0;overflow:visible"><path d="M548,430 C470,420 330,330 244,312" stroke="#E8622C" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M258,302 L244,312 L259,320" stroke="#E8622C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="proof">
+    <div class="h">symbolic engine: checked step by step</div>
+    <div><span>✓</span>AB = AC &nbsp;&nbsp;given</div>
+    <div><span>✓</span>BM = CM &nbsp;&nbsp;M midpoint</div>
+    <div><span>✓</span>AM = AM &nbsp;&nbsp;shared side</div>
+    <div><span>✓</span>△ABM ≅ △ACM &nbsp;SSS</div>
+    <div class="q"><span>∎</span>∠B = ∠C</div>
+  </div>
+</div>
+
+<div class="stat"><b>Same recipe, real result:</b> DeepMind's AlphaGeometry solved <b>25 of 30</b> olympiad geometry problems. The previous best solved <b>10</b>.</div>
+<div class="verdict"><span>Neural: proposes.<br>Symbolic: proves.</span><strong>Each covers<br>the other's <i>blind spot.</i></strong></div>
+
+<div class="foot"><span>the oldest proof in the book, done the neuro-symbolic way</span><span>AI basics</span></div>
+</body></html>

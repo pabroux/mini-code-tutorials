@@ -2,37 +2,52 @@
 <html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Nanum+Pen+Script&display=block" rel="stylesheet">
 <style>
-/* Concept palette: paper, ink, orange = neural */
+/* Concept palette: paper, ink = symbolic, orange = neural */
 :root{--paper:#F4EFE4;--ink:#1B2433;--accent:#E8622C;--pen:#2546A8;}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1350px;background:var(--paper);overflow:hidden}
-body{color:var(--ink);position:relative;padding:70px 72px 0;font-family:Inter,sans-serif;text-align:center}
-h1{font:900 84px/1.05 "Inter Display",Inter,sans-serif;letter-spacing:-.05em}
-h1 .a{color:var(--accent)}
-.step{margin:0 auto;display:flex;align-items:center;justify-content:center}
-.paper{margin-top:56px;width:560px;height:200px;background:#FFFEFA;transform:rotate(-2deg);box-shadow:0 12px 26px rgba(27,36,51,.16);
-  font:400 170px/200px "Nanum Pen Script",cursive;color:var(--pen);letter-spacing:.04em}
+body{color:var(--ink);position:relative;padding:62px 72px 0;font-family:Inter,sans-serif;text-align:center}
+h1{font:900 76px/1.05 "Inter Display",Inter,sans-serif;letter-spacing:-.05em}
+.sub{margin-top:14px;font:600 24px "JetBrains Mono",monospace;color:rgba(27,36,51,.7)}
+.sub b{color:var(--accent)}.sub i{font-style:normal;color:var(--ink);font-weight:800}
+.paper{margin:40px auto 0;width:360px;height:130px;background:#FFFEFA;transform:rotate(-2deg);box-shadow:0 10px 22px rgba(27,36,51,.15);
+  font:400 116px/134px "Nanum Pen Script",cursive;color:var(--pen)}
 .paper span{display:inline-block}
-.arrow{position:relative;height:150px;width:100%}
-.arrow::before{content:"";position:absolute;left:50%;top:18px;bottom:28px;border-left:5px solid var(--c)}
-.arrow::after{content:"";position:absolute;left:calc(50% - 13px);bottom:18px;border:14px solid transparent;border-top:18px solid var(--c);border-bottom:0}
-.label{position:absolute;left:calc(50% + 34px);top:46px;text-align:left;font:800 30px "JetBrains Mono",monospace;color:var(--c);letter-spacing:.02em}
-.label small{display:block;font:600 21px "JetBrains Mono",monospace;color:rgba(27,36,51,.6);margin-top:4px}
-.clean{width:420px;height:130px;border:4px solid var(--ink);background:#fff;font:800 92px/122px "JetBrains Mono",monospace}
-.result{font:900 210px/1 "Inter Display",Inter,sans-serif;letter-spacing:-.04em}
-.foot{position:absolute;left:72px;right:72px;bottom:54px;display:flex;justify-content:space-between;font:600 18px "JetBrains Mono",monospace;color:rgba(27,36,51,.6);border-top:2px solid var(--ink);padding-top:12px}
+.cap{font:600 17px "JetBrains Mono",monospace;color:rgba(27,36,51,.55);margin-top:10px;letter-spacing:.04em;text-transform:uppercase}
+.down{position:relative;height:66px}
+.down::before{content:"";position:absolute;left:50%;top:8px;bottom:16px;border-left:5px solid var(--ink)}
+.down::after{content:"";position:absolute;left:calc(50% - 12px);bottom:6px;border:12px solid transparent;border-top:16px solid var(--ink);border-bottom:0}
+.box{margin:0 auto;width:760px;border:4px solid var(--c);background:#fff;box-shadow:7px 7px 0 var(--c);display:flex;text-align:left}
+.box .t{background:var(--c);color:#fff;width:260px;padding:20px 22px;display:flex;flex-direction:column;justify-content:center}
+.box .t b{font:900 34px/1.05 "Inter Display",Inter,sans-serif;letter-spacing:-.02em}
+.box .t small{font:600 16px/1.4 "JetBrains Mono",monospace;opacity:.85;margin-top:8px}
+.box .d{flex:1;padding:18px 24px;font:600 20px/1.6 "JetBrains Mono",monospace}
+.box .d .ok{color:#1E7A43}.box .d .ko{color:#B42318}
+.box .d .does{font-weight:800;font-size:22px;margin-bottom:6px}
+.chip{display:inline-block;margin:0 auto;font:800 40px "JetBrains Mono",monospace;border:3px solid var(--ink);background:#fff;padding:4px 22px}
+.result{font:900 120px/1 "Inter Display",Inter,sans-serif;letter-spacing:-.04em;margin-top:6px}
+.foot{position:absolute;left:72px;right:72px;bottom:50px;display:flex;justify-content:space-between;font:600 17px "JetBrains Mono",monospace;color:rgba(27,36,51,.6);border-top:2px solid var(--ink);padding-top:12px}
 </style></head><body>
-<h1>One <span class="a">reads.</span><br>One reasons.</h1>
+<h1>Neuro-symbolic AI</h1>
+<div class="sub"><b>a neural network reads</b> · <i>a symbolic system reasons</i></div>
 
-<div class="step paper"><span style="transform:rotate(-6deg)">3</span>&nbsp;<span style="transform:rotate(4deg) translateY(6px)">+</span>&nbsp;<span style="transform:rotate(-3deg)">5</span></div>
+<div class="paper"><span style="transform:rotate(-6deg)">3</span>&nbsp;<span style="transform:rotate(4deg) translateY(4px)">+</span>&nbsp;<span style="transform:rotate(-3deg)">5</span></div>
+<div class="cap">messy input: a photo of handwriting</div>
 
-<div class="arrow" style="--c:#E8622C"><div class="label">NEURAL<small>reads the scribble</small></div></div>
+<div class="down"></div>
+<div class="box" style="--c:#E8622C">
+  <div class="t"><b>Neural network</b><small>LLM, vision model…<br>learns from data</small></div>
+  <div class="d"><div class="does">reads the image → "3", "+", "5"</div><span class="ok">✓ handles messy input</span><br><span class="ko">✗ can be confidently wrong</span></div>
+</div>
+<div class="down"></div>
+<div class="chip">3 + 5</div>
+<div class="down"></div>
+<div class="box" style="--c:#1B2433">
+  <div class="t"><b>Symbolic system</b><small>rules, logic, solver,<br>calculator, SQL…</small></div>
+  <div class="d"><div class="does">applies the rule → 3 + 5 = 8</div><span class="ok">✓ exact and verifiable</span><br><span class="ko">✗ can't read a photo</span></div>
+</div>
+<div class="down"></div>
+<div class="result">8</div>
 
-<div class="step clean">3 + 5</div>
-
-<div class="arrow" style="--c:#1B2433"><div class="label">SYMBOLIC<small>computes it, exactly</small></div></div>
-
-<div class="step result">8</div>
-
-<div class="foot"><span>neuro-symbolic AI</span><span>AI basics</span></div>
+<div class="foot"><span>each covers the other's blind spot</span><span>AI basics</span></div>
 </body></html>

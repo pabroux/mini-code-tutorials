@@ -1,66 +1,83 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Caveat:wght@700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Caveat:wght@600;700&family=Nanum+Pen+Script&display=block" rel="stylesheet">
 <style>
-/* Concept palette (no brand): school paper, ink navy, pencil orange for the neural "guess" */
-:root{--paper:#F6F2E8;--ink:#1B2433;--accent:#E8622C;--sheet:#FFFDF6;}
+/* Concept palette: paper, ink navy, orange = neural (perception), ink = symbolic (logic) */
+:root{--paper:#F4EFE4;--ink:#1B2433;--accent:#E8622C;--white:#FFFEFA;--pen:#2546A8;}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1350px;background:var(--paper);overflow:hidden}
-body{color:var(--ink);position:relative;padding:58px 64px 0;font-family:Inter,sans-serif}
+body{color:var(--ink);position:relative;padding:56px 64px 0;font-family:Inter,sans-serif}
 .kick{display:inline-block;font:700 16px "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:6px 10px}
-h1{font:900 66px/1.08 "Inter Display",Inter,sans-serif;letter-spacing:-.045em;margin-top:22px}
+h1{font:900 62px/1.1 "Inter Display",Inter,sans-serif;letter-spacing:-.045em;margin-top:20px}
 h1 .a{color:var(--accent)}
-.sheet{position:relative;margin-top:40px;height:580px;background-color:var(--sheet);
-  background-image:linear-gradient(rgba(27,36,51,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(27,36,51,.07) 1px,transparent 1px);
-  background-size:28px 28px;border:2px solid var(--ink);box-shadow:6px 6px 0 var(--ink);transform:rotate(-1deg)}
-.sheet svg{position:absolute;left:24px;top:40px}
-.thm{position:absolute;left:30px;top:18px;font:700 17px "JetBrains Mono",monospace}
-.proof{position:absolute;left:470px;top:70px;right:28px;font:600 19px/1.9 "JetBrains Mono",monospace}
-.proof .h{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:rgba(27,36,51,.6);margin-bottom:6px}
-.proof div span{display:inline-block;width:30px;font-weight:700}
-.proof .q{margin-top:6px;border-top:2px solid var(--ink);padding-top:6px;font-weight:700}
-.note{position:absolute;font:700 34px/1.0 Caveat,cursive;color:var(--accent);transform:rotate(-5deg);white-space:nowrap}
-.stat{margin-top:52px;font:600 19px/1.55 "JetBrains Mono",monospace;border-left:5px solid var(--accent);padding:4px 0 4px 18px}
-.stat b{font-weight:800}
-.verdict{margin-top:40px;background:var(--ink);color:var(--paper);padding:24px 28px;display:flex;justify-content:space-between;align-items:center}
+.stage{position:relative;height:520px;margin-top:44px}
+/* napkin */
+.napkin{position:absolute;left:0;top:40px;width:350px;height:410px;background:var(--white);transform:rotate(-5deg);
+  box-shadow:0 14px 30px rgba(27,36,51,.18);clip-path:polygon(0 2%,6% 0,20% 1.5%,40% 0,62% 1.2%,80% 0,100% 1.8%,99% 30%,100% 60%,98.5% 100%,70% 98.6%,45% 100%,20% 98.8%,0 100%,1.2% 70%,0 40%)}
+.napkin::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.6%,rgba(27,36,51,.07) 50%,transparent 50.4%),linear-gradient(transparent 49.6%,rgba(27,36,51,.07) 50%,transparent 50.4%)}
+.hw{position:absolute;left:30px;top:44px;font:400 64px/1.35 "Nanum Pen Script",Caveat,cursive;color:var(--pen)}
+.hw .l{display:block}
+.hw s{text-decoration:none;display:inline-block;transform:rotate(-3deg)}
+.cap{position:absolute;font:700 15px "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+/* neural chips */
+.chips{position:absolute;left:392px;top:70px;width:180px}
+.chip{background:var(--accent);color:#fff;font:700 21px "JetBrains Mono",monospace;padding:12px 14px;margin-bottom:16px;display:flex;justify-content:space-between;box-shadow:3px 3px 0 var(--ink)}
+.chip i{font-style:normal;font-weight:500;font-size:15px;opacity:.9;align-self:center}
+/* calculator */
+.calc{position:absolute;right:0;top:10px;width:330px;height:450px;background:#2A3344;border-radius:26px;padding:26px 24px;box-shadow:0 14px 30px rgba(27,36,51,.25)}
+.lcd{background:#C9D7B8;border-radius:8px;height:120px;padding:12px 16px;font:700 20px "JetBrains Mono",monospace;color:#26301f;display:flex;flex-direction:column;justify-content:space-between;text-align:right}
+.lcd b{font-size:50px;letter-spacing:.02em}
+.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.keys span{height:46px;border-radius:10px;background:#3E4A60;color:#e6e9f0;font:700 20px "JetBrains Mono",monospace;display:flex;align-items:center;justify-content:center}
+.keys .eq{background:var(--accent);color:#fff}
+.arrow{position:absolute;font:700 40px Inter;color:var(--ink)}
+.fails{display:flex;gap:24px;margin-top:6px}
+.fail{flex:1;border:2px dashed rgba(27,36,51,.4);padding:14px 16px;font:600 17px/1.45 "JetBrains Mono",monospace}
+.fail b{display:block;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:rgba(27,36,51,.6);margin-bottom:4px}
+.fail .x{color:#B42318;font-weight:800}
+.agent{margin-top:28px;font:600 19px/1.55 "JetBrains Mono",monospace;border-left:5px solid var(--accent);padding:4px 0 4px 18px}
+.agent b{font-weight:800}
+.verdict{margin-top:30px;background:var(--ink);color:var(--paper);padding:22px 28px;display:flex;justify-content:space-between;align-items:center}
 .verdict span{font:700 17px/1.5 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.04em}
+.verdict span em{font-style:normal;color:var(--accent)}
 .verdict strong{font:900 38px/1.08 "Inter Display",Inter,sans-serif;letter-spacing:-.03em;text-align:right}
 .verdict strong i{font-style:normal;color:var(--accent)}
 .foot{position:absolute;left:64px;right:64px;bottom:50px;display:flex;justify-content:space-between;font:600 16px "JetBrains Mono",monospace;color:rgba(27,36,51,.6);border-top:2px solid var(--ink);padding-top:12px}
 </style></head><body>
-<div class="kick">Neuro-symbolic AI</div>
-<h1>The network <span class="a">guesses the line.</span><br>The logic proves it.</h1>
+<div class="kick">Neuro-symbolic AI, explained with a dinner bill</div>
+<h1>The network <span class="a">reads the napkin.</span><br>The calculator does the math.</h1>
 
-<div class="sheet">
-  <div class="thm">If AB = AC, then ∠B = ∠C.</div>
-  <svg width="420" height="500" viewBox="0 0 420 500">
-    <g fill="none" stroke="#1B2433" stroke-width="4" stroke-linejoin="round">
-      <path d="M210,70 L50,420 L370,420 Z"/>
-    </g>
-    <!-- equal-side ticks -->
-    <g stroke="#1B2433" stroke-width="4"><line x1="118" y1="238" x2="138" y2="250"/><line x1="282" y1="250" x2="302" y2="238"/>
-      <line x1="122" y1="427" x2="122" y2="413"/><line x1="298" y1="427" x2="298" y2="413"/></g>
-    <!-- the neural guess: auxiliary line AM, pencil style -->
-    <path d="M210,74 C211,180 208,300 210,416" stroke="#E8622C" stroke-width="4" stroke-dasharray="14 10" fill="none" stroke-linecap="round"/>
-    <circle cx="210" cy="420" r="7" fill="#E8622C"/>
-    <g font-family="Inter" font-weight="800" font-size="28" fill="#1B2433">
-      <text x="200" y="56">A</text><text x="20" y="440">B</text><text x="380" y="440">C</text>
-      <text x="200" y="470" fill="#E8622C">M</text></g>
-  </svg>
-  <div class="note" style="left:560px;top:400px">neural model:<br>"what if we draw AM?"</div>
-  <svg class="arr" width="1000" height="600" style="position:absolute;left:0;top:0;overflow:visible"><path d="M548,430 C470,420 330,330 244,312" stroke="#E8622C" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M258,302 L244,312 L259,320" stroke="#E8622C" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div class="proof">
-    <div class="h">symbolic engine: checked step by step</div>
-    <div><span>✓</span>AB = AC &nbsp;&nbsp;given</div>
-    <div><span>✓</span>BM = CM &nbsp;&nbsp;M midpoint</div>
-    <div><span>✓</span>AM = AM &nbsp;&nbsp;shared side</div>
-    <div><span>✓</span>△ABM ≅ △ACM &nbsp;SSS</div>
-    <div class="q"><span>∎</span>∠B = ∠C</div>
+<div class="stage">
+  <div class="napkin"><div class="hw">
+    <span class="l">pizza <s>12,5</s></span>
+    <span class="l">drinks <s>8</s></span>
+    <span class="l">tip ~<s>4</s>!!</span>
+  </div></div>
+  <div class="cap" style="left:6px;top:478px">raw input</div>
+
+  <div class="cap" style="left:392px;top:34px;color:var(--accent)">Neural · perceives</div>
+  <div class="chips">
+    <div class="chip">12.50<i>97%</i></div>
+    <div class="chip">8.00<i>92%</i></div>
+    <div class="chip">4.00<i>88%</i></div>
   </div>
+  <div class="cap" style="left:392px;top:300px;width:190px;line-height:1.5;color:rgba(27,36,51,.65)">messy ink →<br>clean symbols,<br>each with a<br>confidence score</div>
+
+  <div class="calc">
+    <div class="lcd"><span>12.5+8+4=</span><b>24.50</b></div>
+    <div class="keys"><span>7</span><span>8</span><span>9</span><span>÷</span><span>4</span><span>5</span><span>6</span><span>×</span><span>1</span><span>2</span><span>3</span><span>−</span><span>0</span><span>.</span><span class="eq">=</span><span>+</span></div>
+  </div>
+  <div class="cap" style="right:0;top:478px">Symbolic · computes, exactly</div>
+  <svg style="position:absolute;left:0;top:0;width:952px;height:520px;overflow:visible" fill="none" stroke="#1B2433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M350,150 C365,150 372,140 384,132"/><path d="M372,128 L385,131 L379,143"/><path d="M582,150 C595,150 600,160 612,160"/><path d="M600,151 L613,160 L601,169"/></svg>
 </div>
 
-<div class="stat"><b>Same recipe, real result:</b> DeepMind's AlphaGeometry solved <b>25 of 30</b> olympiad geometry problems. The previous best solved <b>10</b>.</div>
-<div class="verdict"><span>Neural: proposes.<br>Symbolic: proves.</span><strong>Each covers<br>the other's <i>blind spot.</i></strong></div>
+<div class="fails">
+  <div class="fail"><b>Network alone</b>"Hmm, about <span class="x">25</span>, I think."</div>
+  <div class="fail"><b>Calculator alone</b>Can't read a napkin. <span class="x">Error.</span></div>
+</div>
 
-<div class="foot"><span>the oldest proof in the book, done the neuro-symbolic way</span><span>AI basics</span></div>
+<div class="agent"><b>Your agents already do this.</b> The LLM reads the question and writes the SQL. The database computes the exact answer.</div>
+<div class="verdict"><span><em>Neural:</em> perceives.<br>Symbolic: reasons.</span><strong>Each covers<br>the other's <i>blind spot.</i></strong></div>
+
+<div class="foot"><span>an LLM calling a tool: the simplest neuro-symbolic system</span><span>AI basics</span></div>
 </body></html>

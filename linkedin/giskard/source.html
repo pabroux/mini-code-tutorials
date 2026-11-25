@@ -1,0 +1,65 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Caveat:wght@700&display=block" rel="stylesheet">
+<style>
+/* Giskard palette from the official logo: teal #004040, green #03AB2D */
+:root{--teal:#004040;--green:#03AB2D;--paper:#F5F7F4;--code:#0B2E2E;}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;background:var(--paper);overflow:hidden}
+body{color:var(--teal);position:relative;padding:56px 64px 0;font-family:Inter,sans-serif}
+.mast{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid var(--teal)}
+.mast img{height:58px}
+.tag{background:var(--green);color:#fff;font:700 16px "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.05em;padding:7px 11px}
+h1{font:900 100px/1.0 "Inter Display",Inter,sans-serif;letter-spacing:-.05em;margin-top:40px}
+h1 span{color:var(--green)}
+.panel{position:relative;margin-top:44px;background:var(--code);border-radius:14px;padding:20px 0 150px;color:#d8e6e3}
+.tab{font:600 15px "JetBrains Mono",monospace;color:rgba(216,230,227,.55);padding:0 28px 14px;border-bottom:1px solid rgba(216,230,227,.1);margin-bottom:12px;display:flex;justify-content:space-between}
+pre{font:500 21px/38px "JetBrains Mono",monospace;padding:0 28px}
+.k{color:#7fe3a0}.f{color:#8fd3ff}.s{color:#f1e58a}.c{color:#6f8f8a;font-style:italic}
+.note{position:absolute;font:700 34px/1.05 Caveat,cursive;color:#5BE27F;white-space:nowrap;transform:rotate(-3deg)}
+.verdict{margin-top:36px;background:var(--teal);color:#fff;padding:24px 28px;display:flex;justify-content:space-between;align-items:center}
+.verdict span{font:700 17px/1.5 "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.04em}
+.verdict strong{font:900 38px/1.1 "Inter Display",Inter,sans-serif;letter-spacing:-.03em;text-align:right}
+.verdict strong i{font-style:normal;color:#5BE27F}
+.foot{position:absolute;left:64px;right:64px;bottom:50px;display:flex;justify-content:space-between;font:600 16px "JetBrains Mono",monospace;color:rgba(0,64,64,.6);border-top:2px solid var(--teal);padding-top:12px}
+</style></head><body>
+<div class="mast"><img src="giskard-logo.png" alt=""><div class="tag">v3 · rewritten for agents</div></div>
+
+<h1>Same turtle.<br><span>New shell.</span></h1>
+
+<div class="panel">
+  <div class="tab"><span>scan.py</span><span>pip install "giskard[scan]"</span></div>
+<pre><span class="k">from</span> giskard.scan <span class="k">import</span> vulnerability_scan
+
+<span class="k">async def</span> <span class="f">my_agent</span>(inputs: str) -> str:
+    <span class="k">return</span> ...  <span class="c"># call your agent here</span>
+
+<span class="k">await</span> <span class="f">vulnerability_scan</span>(
+    target=my_agent,<span id="a1"></span>
+    description=<span class="s">"A customer support chatbot</span>
+<span class="s">                 for an e-commerce platform."</span>,<span id="a2"></span>
+    languages=[<span class="s">"en"</span>],
+)<span id="a3"></span></pre>
+</div>
+<div class="note" id="n1">any callable: your agent</div>
+<div class="note" id="n2">one sentence…</div>
+<div class="note" id="n3">…and it writes the attacks:<br>prompt injection, jailbreaks,<br>harmful content</div>
+
+<div class="verdict"><span>v2 tested your model.<br>v3 attacks your agent.</span><strong>Still the quality gate<br><i>before you ship.</i></strong></div>
+
+<div class="foot"><span>giskard v3 · open source · Apache 2.0</span><span>repo in comments ↓</span></div>
+<svg id="svg" style="position:absolute;left:0;top:0;width:1080px;height:1350px;overflow:visible;pointer-events:none"></svg>
+<script>
+document.fonts.ready.then(()=>{
+  const svg=document.getElementById('svg'), G='#5BE27F';
+  const mk=d=>{const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',d);p.setAttribute('stroke',G);p.setAttribute('stroke-width','3');p.setAttribute('fill','none');p.setAttribute('stroke-linecap','round');p.setAttribute('stroke-linejoin','round');svg.appendChild(p);};
+  const place=(ai,ni,x,dy)=>{const a=document.getElementById(ai).getBoundingClientRect(),n=document.getElementById(ni);
+    const y=a.top+a.height/2;n.style.left=x+'px';n.style.top=(y-18+dy)+'px';const r=n.getBoundingClientRect();
+    const sx=r.left-10,sy=r.top+18,ex=a.right+12,ey=y,mx=(sx+ex)/2;
+    mk(`M${sx},${sy} C${mx},${sy-12} ${mx},${ey+10} ${ex},${ey}`);mk(`M${ex+10},${ey-7} L${ex},${ey} L${ex+11},${ey+5}`);};
+  place('a1','n1',520,0); place('a2','n2',760,0);
+  const a3=document.getElementById('a3').getBoundingClientRect(), n3=document.getElementById('n3');
+  n3.style.left='430px'; n3.style.top=(a3.top+8)+'px';
+});
+</script>
+</body></html>
